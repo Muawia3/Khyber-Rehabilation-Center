@@ -1,0 +1,50 @@
+[
+  {
+    "id": "treat-001",
+    "title": "Medical Detoxification & Stabilization",
+    "slug": "medical-detoxification-stabilization",
+    "category": "Inpatient",
+    "summary": "24/7 medically supervised detoxification protocols, withdrawal symptom management, and somatic stabilization.",
+    "description": "Our clinical detoxification unit provides around-the-clock medical supervision, vital signs monitoring, and evidence-based pharmaceutical protocols to safely manage withdrawal symptoms in a secure, dignified setting in Peshawar.",
+    "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600",
+    "order": 1,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:02:43.392Z"
+  },
+  {
+    "id": "treat-002",
+    "title": "Clinical Psychotherapy & CBT",
+    "slug": "clinical-psychotherapy-cbt",
+    "category": "Therapy",
+    "summary": "Individual psychotherapy, Cognitive Behavioral Therapy (CBT), trauma counseling, and emotional regulation.",
+    "description": "Licensed clinical psychologists guide patients through structured therapeutic sessions to identify triggers, resolve underlying trauma, reshape negative thinking patterns, and develop sustainable coping mechanisms.",
+    "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600",
+    "order": 2,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:02:43.393Z"
+  },
+  {
+    "id": "treat-003",
+    "title": "Structured Inpatient Rehabilitation",
+    "slug": "structured-inpatient-rehabilitation",
+    "category": "Inpatient",
+    "summary": "Comprehensive 90-day residential program integrating moral rejuvenation, community living, and peer support.",
+    "description": "A disciplined, compassionate therapeutic community providing structured daily schedules, group dynamics, spiritual guidance, and healthy lifestyle routines to foster self-esteem and responsibility.",
+    "imageUrl": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600",
+    "order": 3,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:02:43.393Z"
+  },
+  {
+    "id": "treat-004",
+    "title": "Relapse Prevention & Family Reintegration",
+    "slug": "relapse-prevention-family-reintegration",
+    "category": "Outpatient",
+    "summary": "Long-term aftercare counseling, trigger mapping, family mediation, and post-discharge alumni support.",
+    "description": "Addiction recovery extends beyond discharge. We equip recovering individuals with relapse prevention plans, ongoing mentoring, and guided family counseling sessions to mend relationships.",
+    "imageUrl": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=600",
+    "order": 4,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:02:43.393Z"
+  }
+]

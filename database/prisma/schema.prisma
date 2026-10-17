@@ -1,0 +1,231 @@
+// Prisma Schema for Khyber Rehabilitation Center, Peshawar
+// Phase 3: Backend & Database Integration
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../node_modules/.prisma/client"
+}
+
+generator backendClient {
+  provider = "prisma-client-js"
+  output   = "../../backend/node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =============================================================================
+// 1. Admin Authentication & Accounts
+// =============================================================================
+model AdminUser {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String
+  role         String    @default("ADMIN") // SUPERADMIN, ADMIN, COORDINATOR
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([email])
+  @@map("admin_users")
+}
+
+// =============================================================================
+// 2. Admission & Contact Inquiries (Private - Never exposed publicly)
+// =============================================================================
+model Inquiry {
+  id          String   @id @default(uuid())
+  fullName    String
+  phone       String
+  email       String?
+  inquiryType String   // e.g. "Admission & Detox", "Psychological Therapy", "Vocational Training", "Product Order", "General"
+  message     String   @db.Text
+  status      String   @default("PENDING") // PENDING, CONTACTED, IN_REVIEW, ARCHIVED
+  ipAddress   String?
+  internalNote String? @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("inquiries")
+}
+
+// =============================================================================
+// 3. Rehabilitation Treatment Programs
+// =============================================================================
+model Treatment {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  summary     String
+  description String   @db.Text
+  category    String?  // Inpatient, Detox, Outpatient, Therapy
+  icon        String?
+  imageUrl    String?
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+  @@index([order])
+  @@map("treatments")
+}
+
+// =============================================================================
+// 4. Vocational Skills & Training Programs
+// =============================================================================
+model SkillProgram {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  category    String   // Carpentry, Information Technology, Tailoring, Electrical, etc.
+  duration    String?  // e.g. "3 Months", "6 Months"
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+  @@index([order])
+  @@map("skill_programs")
+}
+
+// =============================================================================
+// 5. Small-Business & Social Enterprise Initiatives
+// =============================================================================
+model BusinessInitiative {
+  id            String   @id @default(uuid())
+  name          String
+  slug          String   @unique
+  description   String   @db.Text
+  category      String?  // Woodcrafts, Textiles, Pottery, Agriculture
+  contactPerson String?
+  contactPhone  String?
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+  @@map("business_initiatives")
+}
+
+// =============================================================================
+// 6. Patient-Crafted Products (Vocational Catalog)
+// =============================================================================
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  price       Decimal? @db.Decimal(10, 2)
+  category    String?  // Woodcrafts, Textiles, Art & Pottery
+  workshop    String?  // Carpentry Department, Textile Workshop, etc.
+  imageUrl    String?
+  isAvailable Boolean  @default(true)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([category])
+  @@index([isPublished])
+  @@map("products")
+}
+
+// =============================================================================
+// 7. Approved & Consent-Based Success Stories (Anonymized & Respectful)
+// =============================================================================
+model SuccessStory {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  patientIdentifier String   // e.g. "Alumnus (Peshawar)", "Workshop Graduate"
+  story             String   @db.Text
+  recoveryPeriod    String?  // e.g. "2+ Years Clean", "18 Months Recovery"
+  category          String?  // Substance Recovery, Vocational Empowerment, Family Support
+  imageUrl          String?
+  isConsentGiven    Boolean  @default(true)
+  isFeatured        Boolean  @default(false)
+  isPublished       Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+  @@index([isFeatured])
+  @@map("success_stories")
+}
+
+// =============================================================================
+// 8. Dynamic / Editable Site Content
+// =============================================================================
+model SiteContent {
+  id        String   @id @default(uuid())
+  key       String   @unique // e.g. "hero_headline", "mission_statement", "contact_phone"
+  section   String   // home, about, contact, global
+  title     String?
+  content   String   @db.Text
+  updatedAt DateTime @updatedAt
+
+  @@index([key])
+  @@index([section])
+  @@map("site_contents")
+}
+
+// =============================================================================
+// 9. Public Announcements & News Notices
+// =============================================================================
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  category    String?  // Notice, Event, Hiring, Press Release
+  imageUrl    String?
+  startDate   DateTime?
+  endDate     DateTime?
+  isPublished Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+  @@index([publishedAt])
+  @@map("announcements")
+}
+
+// =============================================================================
+// 10. Organizational Leadership & Hierarchy Structure
+// =============================================================================
+model LeadershipMember {
+  id          String              @id @default(uuid())
+  name        String
+  designation String
+  photo       String?             @db.Text
+  bio         String?             @db.Text
+  email       String?
+  phone       String?
+  order       Int                 @default(0)
+  isPublished Boolean             @default(true)
+  parentId    String?
+  parent      LeadershipMember?   @relation("LeadershipTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children    LeadershipMember[]  @relation("LeadershipTree")
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  @@index([parentId])
+  @@index([order])
+  @@index([isPublished])
+  @@map("leadership_members")
+}

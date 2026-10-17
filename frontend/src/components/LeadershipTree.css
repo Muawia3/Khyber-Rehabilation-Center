@@ -1,0 +1,670 @@
+/* ==========================================================================
+   Organizational Hierarchy Tree Styles (Connecting Lines & Glassmorphic Nodes)
+   ========================================================================== */
+
+.leadership-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.org-tree-container {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Controls Bar */
+.org-tree-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-4) var(--spacing-6);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.org-tree-view-toggles {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.view-toggle-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(1, 156, 220, 0.25);
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-gray-700);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.org-parent-badge {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .view-toggle-btn:hover {
+    background-color: var(--color-primary-50);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+  }
+}
+
+
+.view-toggle-btn.active {
+  background: var(--gradient-brand-vibrant);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(1, 156, 220, 0.35);
+}
+
+/* Tree Chart Scroll Area */
+.org-tree-viewport {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2.5rem 1rem 3rem;
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(1, 156, 220, 0.12) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(240, 248, 253, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border: 1px solid rgba(1, 156, 220, 0.28);
+  border-radius: var(--radius-2xl);
+  box-shadow: 
+    inset 0 2px 10px rgba(1, 156, 220, 0.08),
+    0 12px 32px -6px rgba(1, 156, 220, 0.12);
+  display: flex;
+  justify-content: safe center;
+  box-sizing: border-box;
+  min-height: 480px;
+}
+
+.org-tree-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: max-content;
+  max-width: 100%;
+  transition: all 0.25s ease;
+}
+
+@supports not (zoom: 1) {
+  .org-tree-root {
+    transform: scale(var(--org-tree-zoom, 0.8));
+    transform-origin: top center;
+  }
+}
+
+
+/* Recursive Node Container */
+.org-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Member Card */
+.org-card {
+  width: 235px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(228, 246, 254, 0.65) 100%);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1.5px solid rgba(1, 156, 220, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 16px 14px;
+  text-align: center;
+  box-shadow: 
+    0 10px 28px -4px rgba(1, 156, 220, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+.org-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95) 30%, #019CDC 50%, rgba(255, 255, 255, 0.95) 70%, transparent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .org-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 
+      0 18px 40px -6px rgba(1, 156, 220, 0.3),
+      0 0 25px rgba(1, 156, 220, 0.22);
+    border-color: rgba(1, 156, 220, 0.65);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(220, 245, 255, 0.78) 100%);
+  }
+}
+
+.org-card:active {
+  opacity: 0.96;
+  filter: brightness(0.98);
+}
+
+
+/* Top-Level CEO Card Distinctive Style */
+.org-card.is-ceo {
+  width: 275px;
+  border-color: rgba(1, 156, 220, 0.55);
+  border-width: 2px;
+  background: linear-gradient(135deg, rgba(240, 250, 255, 0.9) 0%, rgba(215, 242, 254, 0.75) 100%);
+  box-shadow: 
+    0 18px 45px -5px rgba(1, 156, 220, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    0 0 30px rgba(1, 156, 220, 0.2);
+}
+
+
+.ceo-crown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gradient-brand-vibrant);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px rgba(1, 156, 220, 0.35);
+}
+
+/* Card Avatar */
+.org-card-avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 3px solid var(--color-white);
+  box-shadow: 0 4px 14px rgba(1, 156, 220, 0.25);
+  background-color: var(--color-primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.org-card.is-ceo .org-card-avatar {
+  width: 78px;
+  height: 78px;
+  border-color: rgba(1, 156, 220, 0.25);
+  box-shadow: 0 6px 18px rgba(1, 156, 220, 0.35);
+}
+
+
+.org-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-fallback {
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-brand-vibrant);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.org-card-name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+
+.org-card.is-ceo .org-card-name {
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+}
+
+.org-card-designation {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.org-card-bio-snippet {
+  font-size: 11px;
+  color: var(--color-gray-600);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.org-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid rgba(1, 156, 220, 0.15);
+  padding-top: 10px;
+  margin-top: 6px;
+}
+
+.card-children-count {
+  font-size: 11px;
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-100);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Tree Connecting Lines
+   ========================================================================== */
+
+/* Vertical line down from parent card */
+.org-node.has-children > .org-card-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5px;
+  height: 24px;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px rgba(1, 156, 220, 0.5);
+  z-index: 2;
+}
+
+.org-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Children row container */
+.org-children-row {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 24px 0 0 0;
+  margin: 0;
+  position: relative;
+}
+
+/* Each child branch */
+.org-child-branch {
+  position: relative;
+  padding: 22px 8px 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Vertical line dropping from horizontal bus line down into child card */
+.org-child-branch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5px;
+  height: 24px;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px rgba(1, 156, 220, 0.5);
+  z-index: 2;
+}
+
+/* Horizontal connecting bus line connecting siblings */
+.org-child-branch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--color-primary);
+  box-shadow: 0 0 8px rgba(1, 156, 220, 0.35);
+  z-index: 1;
+}
+
+/* First sibling starts bus line at 50% */
+.org-child-branch:first-child::after {
+  left: 50%;
+  width: 50%;
+}
+
+/* Last sibling ends bus line at 50% */
+.org-child-branch:last-child::after {
+  width: 50%;
+}
+
+/* Only child has no horizontal bus line */
+.org-child-branch:only-child::after {
+  display: none;
+}
+
+/* Branch Expand / Collapse Button */
+.branch-toggle-btn {
+  margin-top: 8px;
+  background-color: var(--color-primary-50);
+  border: 1px solid rgba(1, 156, 220, 0.3);
+  color: var(--color-primary-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .branch-toggle-btn:hover {
+    background: var(--gradient-brand-vibrant);
+    color: var(--color-white);
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(1, 156, 220, 0.3);
+  }
+}
+
+.branch-toggle-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* ==========================================================================
+   Branch / Hierarchy List View (Mobile-Friendly & Linear Outline)
+   ========================================================================== */
+.org-list-view {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-md);
+}
+
+.org-list-item {
+  position: relative;
+  margin-bottom: var(--spacing-4);
+}
+
+.org-list-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(1, 156, 220, 0.18);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .org-list-card:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-50);
+    transform: translateX(6px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.org-list-card:active {
+  opacity: 0.96;
+}
+
+
+.org-list-card.is-ceo {
+  background: linear-gradient(90deg, #edf7fc 0%, #ffffff 100%);
+  border-color: var(--color-primary);
+  border-width: 2px;
+  box-shadow: 0 4px 16px rgba(1, 156, 220, 0.15);
+}
+
+.org-list-children {
+  padding-left: var(--spacing-8);
+  margin-top: var(--spacing-3);
+  border-left: 2px dashed rgba(1, 156, 220, 0.35);
+  margin-left: var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+/* Responsive Hierarchy Structure for Mobile */
+@media (max-width: 768px) {
+  /* Prevent horizontal scrolling completely */
+  .org-tree-viewport {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 1.5rem 0.5rem 2rem;
+    min-height: auto;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--radius-xl);
+  }
+
+  .org-tree-root {
+    zoom: 1 !important;
+    transform: none !important;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  /* Zoom controls are hidden on mobile since tree fits 100% viewport */
+  .org-tree-zoom-controls {
+    display: none !important;
+  }
+
+  .org-tree-controls {
+    padding: var(--spacing-3) var(--spacing-4);
+    justify-content: center;
+  }
+
+  .org-tree-view-toggles {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .view-toggle-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  /* Node containers */
+  .org-node {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .org-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Leadership Card Sizing */
+  .org-card {
+    width: 100%;
+    max-width: 275px;
+    padding: 14px 12px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .org-card.is-ceo {
+    width: 100%;
+    max-width: 285px;
+  }
+
+  .org-card-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 8px;
+  }
+
+  .org-card.is-ceo .org-card-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .org-card-name {
+    font-size: var(--font-size-sm);
+  }
+
+  .org-card.is-ceo .org-card-name {
+    font-size: 1.1rem;
+  }
+
+  .org-card-designation {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  /* Show reporting badge on mobile so hierarchy parent is always clear */
+  .org-parent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    background: rgba(1, 156, 220, 0.1);
+    border: 1px solid rgba(1, 156, 220, 0.25);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .org-parent-badge-arrow {
+    color: var(--color-primary);
+    font-weight: 900;
+  }
+
+  /* Connecting lines in mobile vertical mode */
+  .org-node.has-children > .org-card-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px;
+    height: 16px;
+    background: var(--color-primary);
+    box-shadow: 0 0 6px rgba(1, 156, 220, 0.45);
+    z-index: 2;
+  }
+
+  /* Children row: convert to vertical column */
+  .org-children-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0 0 0;
+    margin: 0;
+    position: relative;
+    list-style: none;
+  }
+
+  /* Each child branch */
+  .org-child-branch {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .org-child-branch:not(:last-child) {
+    margin-bottom: 6px;
+  }
+
+  /* Vertical connector dropping into child card */
+  .org-child-branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2.5px;
+    height: 16px;
+    background: var(--color-primary);
+    box-shadow: 0 0 6px rgba(1, 156, 220, 0.45);
+    z-index: 2;
+  }
+
+  /* Disable horizontal bus lines on mobile */
+  .org-child-branch::after {
+    display: none !important;
+  }
+
+  /* Mobile Hierarchy Outline List View adjustments */
+  .org-list-view {
+    padding: var(--spacing-4) var(--spacing-3);
+  }
+
+  .org-list-card {
+    padding: var(--spacing-3);
+    gap: var(--spacing-3);
+  }
+
+  .org-list-children {
+    padding-left: var(--spacing-3);
+    margin-left: var(--spacing-2);
+  }
+}
+

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "biz-001",
+    "name": "Loader Rickshaw Logistics & Delivery Fleet",
+    "slug": "loader-rickshaw-logistics-delivery-fleet",
+    "category": "Logistics & Cargo Transit",
+    "contactPerson": "Admissions & Enterprise Desk",
+    "contactPhone": "0300-7335962",
+    "description": "Commercial cargo transit and goods distribution service operated by recovering individuals across Peshawar and Charsadda Road, providing safe logistics and dignified earnings.",
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  },
+  {
+    "id": "biz-002",
+    "name": "Chinchi Rickshaw Passenger Transit Service",
+    "slug": "chinchi-rickshaw-passenger-transit-service",
+    "category": "Passenger Transit",
+    "contactPerson": "Operations Coordinator",
+    "contactPhone": "0300-7335962",
+    "description": "Community passenger shuttle service on Naguman-Charsadda Road and urban Peshawar corridors, enabling trained alumni to generate stable daily income with pride.",
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  },
+  {
+    "id": "biz-003",
+    "name": "Livestock & Dairy Farming Initiative",
+    "slug": "livestock-dairy-farming-initiative",
+    "category": "Agriculture & Dairy",
+    "contactPerson": "Agricultural Supervisor",
+    "contactPhone": "0300-7335962",
+    "description": "Sustainable dairy cattle and goat farming cooperative providing pure milk supply, livestock rearing experience, and long-term agricultural livelihood opportunities.",
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "name": "khyber-rehabilitation-center",
+  "version": "1.0.0",
+  "description": "Full-stack web application for Khyber Rehabilitation Center, Peshawar",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev:all",
+    "dev:all": "concurrently -n \"BACKEND,FRONTEND\" -c \"blue,cyan\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:frontend",
+    "start:backend": "npm --prefix backend start",
+    "prisma:generate": "npx prisma generate --schema=database/prisma/schema.prisma",
+    "prisma:migrate": "npx prisma migrate dev --schema=database/prisma/schema.prisma",
+    "prisma:migrate:deploy": "npx prisma migrate deploy --schema=database/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema=database/prisma/schema.prisma",
+    "db:seed": "node database/seed/seed.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "khyber-rehabilitation-center",
+    "rehabilitation",
+    "peshawar",
+    "react",
+    "express",
+    "prisma",
+    "postgresql"
+  ],
+  "author": "Khyber Rehabilitation Center",
+  "license": "ISC"
+}

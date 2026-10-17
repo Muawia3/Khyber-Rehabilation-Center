@@ -1,0 +1,130 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  filter: grayscale(40%);
+}
+
+/* Primary Button with Subtle Glowing Gradient */
+.btn-primary {
+  background: var(--gradient-brand-vibrant);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(1, 156, 220, 0.35);
+}
+
+/* Glass Outline Button */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  color: var(--color-primary-dark);
+  border-color: rgba(1, 156, 220, 0.35);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-200);
+}
+
+/* WhatsApp Live Helpline Button */
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.32);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-gray-700);
+  border-color: transparent;
+}
+
+/* Genuine Hover Lifts (Fine pointer only - avoids mobile sticky lift) */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #01b8ff 0%, #018cc5 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(1, 156, 220, 0.45);
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    background: var(--color-primary-50);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(1, 156, 220, 0.2);
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--color-primary-200);
+    transform: translateY(-2px);
+  }
+
+  .btn-whatsapp:hover:not(:disabled) {
+    background: linear-gradient(135deg, #2fe671 0%, #149c8c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(37, 211, 102, 0.45);
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    background: rgba(1, 156, 220, 0.08);
+    color: var(--color-primary);
+  }
+}
+
+/* Intentional tap feedback on touch without vertical jump */
+.btn:active:not(:disabled) {
+  opacity: 0.92;
+  filter: brightness(0.97);
+  transform: scale(0.985);
+}
+
+/* Sizes */
+.btn-sm {
+  padding: 0.5rem 0.875rem;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+.btn-md {
+  padding: 0.65rem 1.25rem;
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+}
+
+.btn-lg {
+  padding: 0.85rem 1.75rem;
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-lg);
+}
+
+.btn-pill {
+  border-radius: var(--radius-full);
+}

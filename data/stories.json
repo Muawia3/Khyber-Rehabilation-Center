@@ -1,0 +1,44 @@
+[
+  {
+    "id": "story-001",
+    "title": "From Darkness to Independence: 150+ Patients Milestone Journey",
+    "slug": "from-darkness-to-independence-150-recovered",
+    "patientIdentifier": "Recovered Alumnus (Peshawar)",
+    "recoveryPeriod": "2+ Years Clean",
+    "category": "Substance Recovery",
+    "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+    "isConsentGiven": true,
+    "isFeatured": true,
+    "isPublished": true,
+    "story": "When I was admitted to Khyber Rehabilitation Center at Naguman, Charsadda Road, my health and family relationships were completely shattered. The medical team safely guided me through detoxification. In the Fabric Cut Work workshop, I discovered focus and artistry. Today, I am proud to be among the 150+ recovered patients living with dignity and self-reliance.",
+    "createdAt": "2026-10-14T08:04:09.281Z"
+  },
+  {
+    "id": "story-002",
+    "title": "Earning with Honor Through Loader Rickshaw Logistics",
+    "slug": "earning-with-honor-loader-rickshaw",
+    "patientIdentifier": "Batch Graduate (85 Programs Completed)",
+    "recoveryPeriod": "18 Months Clean",
+    "category": "Small Business Empowerment",
+    "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+    "isConsentGiven": true,
+    "isFeatured": true,
+    "isPublished": true,
+    "story": "Completing the rehabilitation program gave me my life back. With the support of our Center, I joined the Loader Rickshaw commercial transit initiative. Operating between Peshawar and Charsadda Road, I earn an honest daily living and proudly support my family without looking back.",
+    "createdAt": "2026-10-14T08:04:09.281Z"
+  },
+  {
+    "id": "story-003",
+    "title": "Finding Peace and Purpose in Livestock Cooperative",
+    "slug": "finding-peace-and-purpose-in-livestock",
+    "patientIdentifier": "KP Resident Alumnus",
+    "recoveryPeriod": "14 Months Clean",
+    "category": "Livestock & Vocational Enterprise",
+    "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400",
+    "isConsentGiven": true,
+    "isFeatured": true,
+    "isPublished": true,
+    "story": "The combination of spiritual counseling from our religious teacher, medical monitoring, and hands-on work in the livestock dairy unit restored my peace of mind. Khyber Rehabilitation Center gave me a second chance at life.",
+    "createdAt": "2026-10-14T08:04:09.281Z"
+  }
+]

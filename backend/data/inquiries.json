@@ -1,0 +1,28 @@
+[
+  {
+    "id": "inqu-1791965563560",
+    "createdAt": "2026-10-14T08:12:43.560Z",
+    "updatedAt": "2026-10-17T06:46:09.963Z",
+    "fullName": "Ali Khan",
+    "phone": "+92 300 9876543",
+    "email": null,
+    "inquiryType": "Admission & Detox",
+    "message": "Testing contact inquiry without database error",
+    "ipAddress": "::1",
+    "status": "CONTACTED",
+    "internalNote": "Followup call scheduled"
+  },
+  {
+    "id": "inqu-1791965048454",
+    "createdAt": "2026-10-14T08:04:08.454Z",
+    "updatedAt": "2026-10-17T06:35:27.291Z",
+    "fullName": "Test Patient",
+    "phone": "+923001234567",
+    "email": "test@example.com",
+    "inquiryType": "Admission & Detox",
+    "message": "Testing inquiry submission",
+    "ipAddress": "::1",
+    "status": "CLOSED",
+    "internalNote": ""
+  }
+]

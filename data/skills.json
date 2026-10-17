@@ -1,0 +1,46 @@
+[
+  {
+    "id": "skill-001",
+    "title": "Fabric Cut Work - Pattern Drafting & Precision Cutting",
+    "slug": "fabric-cut-work-pattern-drafting-precision-cutting",
+    "category": "Fabric Cut Work",
+    "duration": "3 Months",
+    "description": "Foundational training in geometric pattern design, fabric grading, precision scissor cutting, and fabric preparation for artisan apparel.",
+    "order": 1,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  },
+  {
+    "id": "skill-002",
+    "title": "Fabric Cut Work - Hand & Machine Cutwork Embroidery",
+    "slug": "fabric-cut-work-embroidery",
+    "category": "Fabric Cut Work",
+    "duration": "3 Months",
+    "description": "Specialized techniques in intricate cutwork, edge border embroidery, floral eyelet cutwork, and traditional needlework motifs.",
+    "order": 2,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  },
+  {
+    "id": "skill-003",
+    "title": "Fabric Cut Work - Garment Stitching & Tailoring Assembly",
+    "slug": "fabric-cut-work-garment-stitching-tailoring",
+    "category": "Fabric Cut Work",
+    "duration": "3 Months",
+    "description": "Industrial sewing machine operation, cutwork panel joining, collar attachment, and finishing of regional and modern garments.",
+    "order": 3,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  },
+  {
+    "id": "skill-004",
+    "title": "Fabric Cut Work - Textile Finishing & Quality Control",
+    "slug": "fabric-cut-work-finishing-quality-control",
+    "category": "Fabric Cut Work",
+    "duration": "2 Months",
+    "description": "Steam pressing, thread trimming, quality inspection, and commercial packaging for cutwork textile goods and customer orders.",
+    "order": 4,
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.280Z"
+  }
+]

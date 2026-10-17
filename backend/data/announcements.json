@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ann-001",
+    "title": "Free Family Addiction Awareness & Counseling Seminar",
+    "slug": "free-family-addiction-awareness-counseling-seminar",
+    "category": "Event",
+    "content": "Khyber Rehabilitation Center is hosting a free educational seminar this Saturday for families seeking guidance on early addiction warning signs, intervention strategies, and compassionate intake pathways in Peshawar.",
+    "startDate": "2026-10-14",
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.281Z"
+  },
+  {
+    "id": "ann-002",
+    "title": "New Inpatient Rehabilitation & Vocational Batch Open",
+    "slug": "new-inpatient-rehabilitation-vocational-batch-open",
+    "category": "Admissions",
+    "content": "Admissions are currently open for our comprehensive 90-day residential program with medical detoxification and vocational training enrollment. 24/7 helpline is available for confidential intake.",
+    "startDate": "2026-10-14",
+    "isPublished": true,
+    "createdAt": "2026-10-14T08:04:09.281Z"
+  }
+]
