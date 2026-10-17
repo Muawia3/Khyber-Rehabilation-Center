@@ -57,7 +57,7 @@ export const ContactPage = () => {
 
   const bannerDesc = contact?.bannerDesc || 'Our admissions coordinators and medical team in Peshawar are available 24/7 for confidential consultations, guidance, and intake assistance.';
   const confidentialityNotice = contact?.confidentialityNotice || 'All calls, messages, and inquiries submitted to Khyber Rehabilitation Center are strictly confidential. Inpatient admissions are accepted 24 hours a day, 7 days a week.';
-  const locationNote = contact?.locationNote || 'Our center is located at 4JCQ+GGG, Naguman, Charsadda Rd, near Gulbella, Peshawar, Pakistan. Dedicated transport assistance and patient reception are coordinated 24/7 via 0300-7335962.';
+  const locationNote = contact?.locationNote || 'Our center is located at Naguman, Charsadda Rd, Near Gulbella, Peshawar, Pakistan. Dedicated transport assistance and patient reception are coordinated 24/7 via 0300-7335962.';
   const verifiedMapEmbedUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.748680789726!2d71.6362626763489!3d34.12130727313203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d93f005f326fff%3A0x6b7e8f86574a6d55!2sKHYBER%20REHABILITATION%20CENTRE!5e0!3m2!1sen!2spk!5m2!1sen!2spk';
   const osmMapEmbedUrl = 'https://www.openstreetmap.org/export/embed.html?bbox=71.6288376%2C34.1163073%2C71.6488376%2C34.1263073&layer=mapnik&marker=34.1213073%2C71.6388376';
   const googleMapsDirectUrl = 'https://www.google.com/maps/place/KHYBER+REHABILITATION+CENTRE/@34.1213073,71.6388376,17z/data=!3m1!4b1!4m6!3m5!1s0x38d93f005f326fff:0x6b7e8f86574a6d55!8m2!3d34.1213073!4d71.6388376!16s%2Fg%2F11vpnm_xcm';
