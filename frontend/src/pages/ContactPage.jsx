@@ -71,7 +71,7 @@ export const ContactPage = () => {
   const currentEmbedUrl = mapProvider === 'osm' ? osmMapEmbedUrl : mapEmbedUrl;
 
   const handleCopyLocation = () => {
-    navigator.clipboard?.writeText('4JCQ+GGG, Naguman, Charsadda Rd, near Gulbella, Peshawar, Pakistan (34.121307, 71.638838)');
+    navigator.clipboard?.writeText('Naguman, Charsadda Rd, near Gulbella, Peshawar, Pakistan (34.121307, 71.638838)');
     setCopyStatus(true);
     setTimeout(() => setCopyStatus(false), 2500);
   };
