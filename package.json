@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Full-stack web application for Khyber Rehabilitation Center, Peshawar",
   "private": true,
+  "type": "module",
   "workspaces": [
     "frontend",
     "backend"
@@ -13,7 +14,7 @@
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
     "build:frontend": "npm --prefix frontend run build",
-    "build": "npm run build:frontend",
+    "build": "npm run build:frontend && node scripts/sync-dist.js",
     "start:backend": "npm --prefix backend start",
     "prisma:generate": "npx prisma generate --schema=database/prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate dev --schema=database/prisma/schema.prisma",
