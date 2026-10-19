@@ -241,9 +241,14 @@ export const Navbar = () => {
                 <NavLink
                   to="/leadership"
                   onClick={closeMenu}
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  className={({ isActive }) => `mobile-leadership-link ${isActive ? 'active' : ''}`}
                 >
-                  🏛️ {leadershipText}
+                  <span className="mobile-leadership-icon">🏛️</span>
+                  <div className="mobile-leadership-info">
+                    <span className="mobile-leadership-title">{leadershipText}</span>
+                    <span className="mobile-leadership-sub">CEO & Institutional Hierarchy</span>
+                  </div>
+                  <span className="mobile-leadership-arrow">→</span>
                 </NavLink>
               </li>
             )}

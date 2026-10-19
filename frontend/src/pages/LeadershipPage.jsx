@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { SectionHeader, Card, Button, LoadingSpinner, Alert, LeadershipTree } from '../components';
 import { useDocumentTitle } from '../hooks';
 import { leadershipService } from '../services';
-import { APP_NAME, CONTACT_INFO } from '../utils/constants';
+import { APP_NAME, CONTACT_INFO, DEFAULT_LEADERSHIP_TREE, DEFAULT_LEADERSHIP_MEMBERS } from '../utils';
 
 export const LeadershipPage = () => {
   useDocumentTitle('Our Leadership & Organizational Hierarchy');
-  const [treeData, setTreeData] = useState([]);
-  const [flatMembers, setFlatMembers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [treeData, setTreeData] = useState(DEFAULT_LEADERSHIP_TREE);
+  const [flatMembers, setFlatMembers] = useState(DEFAULT_LEADERSHIP_MEMBERS);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -17,17 +17,16 @@ export const LeadershipPage = () => {
   }, []);
 
   const loadLeadership = async () => {
-    setLoading(true);
-    setError(null);
     try {
       const response = await leadershipService.getLeadershipTree();
-      if (response && response.data) {
-        setTreeData(response.data.tree || []);
+      if (response && response.data && Array.isArray(response.data.tree) && response.data.tree.length > 0) {
+        setTreeData(response.data.tree);
         setFlatMembers(response.data.flat || []);
+        setError(null);
       }
     } catch (err) {
-      console.error('Failed to load leadership data:', err);
-      setError('Unable to load latest leadership data from database. Displaying standard institutional structure.');
+      // Keep DEFAULT_LEADERSHIP_TREE active without disrupting user experience on mobile
+      console.warn('Live leadership API offline or connecting, using institutional hierarchy defaults.');
     } finally {
       setLoading(false);
     }

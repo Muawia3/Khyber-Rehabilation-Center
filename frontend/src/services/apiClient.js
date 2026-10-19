@@ -1,4 +1,24 @@
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1';
+// Dynamically determine the API Base URL:
+// 1. Explicit VITE_API_BASE_URL env var if provided
+// 2. In production (e.g. Vercel deployment), relative path '/api/v1' to prevent mixed-content/localhost errors on mobile
+// 3. In development, connects to localhost:5000 or host IP if accessed from a mobile phone on the same Wi-Fi
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL.replace(/\/+$/, '');
+  }
+  if (typeof window !== 'undefined') {
+    if (import.meta.env.PROD) {
+      return '/api/v1';
+    }
+    const hostname = window.location.hostname;
+    if (hostname && hostname !== 'localhost' && hostname !== '127.0.0.1') {
+      return `http://${hostname}:5000/api/v1`;
+    }
+  }
+  return 'http://localhost:5000/api/v1';
+};
+
+const BASE_URL = getBaseUrl();
 
 export const apiClient = async (endpoint, { body, ...customConfig } = {}, retries = 1) => {
   const headers = { 'Content-Type': 'application/json' };

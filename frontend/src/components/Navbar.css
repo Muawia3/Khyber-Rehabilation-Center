@@ -470,22 +470,77 @@
 /* --------------------------------------------------------------------------
    Responsive Mobile Drawer Navigation
    -------------------------------------------------------------------------- */
-@media (max-width: 1140px) {
+@media (max-width: 1040px) {
   .header-actions .leadership-btn-navlink {
     display: none;
   }
-}
 
-@media (max-width: 1040px) {
   .mobile-toggle {
     display: flex;
   }
 
   .mobile-only-nav-item {
     display: block;
-    margin-top: var(--spacing-2);
-    border-top: 1px solid rgba(1, 156, 220, 0.15);
-    padding-top: var(--spacing-2);
+    margin-top: var(--spacing-3);
+    border-top: 1px solid rgba(1, 156, 220, 0.2);
+    padding-top: var(--spacing-3);
+  }
+
+  .mobile-leadership-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(230, 246, 252, 0.95) 0%, rgba(245, 251, 255, 0.95) 100%);
+    border: 1.5px solid rgba(1, 156, 220, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--color-gray-900);
+    box-shadow: 0 4px 14px rgba(1, 156, 220, 0.12);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-leadership-link.active {
+    background: linear-gradient(135deg, rgba(1, 156, 220, 0.18) 0%, rgba(230, 246, 252, 0.95) 100%);
+    border-color: var(--color-primary);
+  }
+
+  .mobile-leadership-icon {
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(1, 156, 220, 0.2);
+    flex-shrink: 0;
+  }
+
+  .mobile-leadership-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobile-leadership-title {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+  }
+
+  .mobile-leadership-sub {
+    font-size: 11px;
+    color: var(--color-gray-600);
+    font-weight: 500;
+  }
+
+  .mobile-leadership-arrow {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    font-weight: 700;
   }
 
   .main-nav {

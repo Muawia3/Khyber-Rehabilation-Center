@@ -471,9 +471,10 @@
   /* Prevent horizontal scrolling completely */
   .org-tree-viewport {
     width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
     overflow-y: visible;
-    padding: 1.5rem 0.5rem 2rem;
+    padding: 1.25rem 0.25rem 1.75rem;
     min-height: auto;
     box-sizing: border-box;
     display: flex;
@@ -491,8 +492,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
   }
-
 
   /* Zoom controls are hidden on mobile since tree fits 100% viewport */
   .org-tree-zoom-controls {
@@ -500,59 +501,69 @@
   }
 
   .org-tree-controls {
-    padding: var(--spacing-3) var(--spacing-4);
+    padding: var(--spacing-3) var(--spacing-3);
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .org-tree-view-toggles {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .view-toggle-btn {
-    padding: 6px 12px;
+    padding: 7px 13px;
     font-size: 11px;
+    flex: 1 1 auto;
+    max-width: 160px;
+    justify-content: center;
   }
 
   /* Node containers */
   .org-node {
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    box-sizing: border-box;
   }
 
   .org-card-wrapper {
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
   }
 
   /* Leadership Card Sizing */
   .org-card {
     width: 100%;
-    max-width: 275px;
-    padding: 14px 12px;
+    max-width: 260px;
+    padding: 13px 11px;
     box-sizing: border-box;
     margin: 0 auto;
   }
 
   .org-card.is-ceo {
     width: 100%;
-    max-width: 285px;
+    max-width: 270px;
   }
 
   .org-card-avatar {
-    width: 60px;
-    height: 60px;
+    width: 58px;
+    height: 58px;
     margin-bottom: 8px;
   }
 
   .org-card.is-ceo .org-card-avatar {
-    width: 72px;
-    height: 72px;
+    width: 68px;
+    height: 68px;
   }
 
   .org-card-name {
@@ -560,7 +571,7 @@
   }
 
   .org-card.is-ceo .org-card-name {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .org-card-designation {
@@ -585,6 +596,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .org-parent-badge-arrow {
@@ -612,10 +624,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    max-width: 100%;
     padding: 16px 0 0 0;
     margin: 0;
     position: relative;
     list-style: none;
+    box-sizing: border-box;
   }
 
   /* Each child branch */
@@ -627,6 +641,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    box-sizing: border-box;
   }
 
   .org-child-branch:not(:last-child) {
@@ -654,17 +669,72 @@
 
   /* Mobile Hierarchy Outline List View adjustments */
   .org-list-view {
-    padding: var(--spacing-4) var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   .org-list-card {
-    padding: var(--spacing-3);
-    gap: var(--spacing-3);
+    padding: 10px 12px;
+    gap: 10px;
+    box-sizing: border-box;
+    min-width: 0;
   }
 
   .org-list-children {
-    padding-left: var(--spacing-3);
-    margin-left: var(--spacing-2);
+    padding-left: 8px;
+    margin-left: 6px;
+    border-left: 1.5px dashed rgba(1, 156, 220, 0.35);
+    box-sizing: border-box;
+  }
+}
+
+/* Extra small devices (320px - 360px: e.g. iPhone SE, small Galaxy) */
+@media (max-width: 360px) {
+  .org-tree-viewport {
+    padding: 1rem 0.15rem 1.5rem;
+  }
+
+  .org-card {
+    max-width: 235px;
+    padding: 11px 8px;
+  }
+
+  .org-card.is-ceo {
+    max-width: 245px;
+  }
+
+  .org-card-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .org-card.is-ceo .org-card-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .org-card-name {
+    font-size: 0.85rem;
+  }
+
+  .org-card.is-ceo .org-card-name {
+    font-size: 0.95rem;
+  }
+
+  .org-card-designation {
+    font-size: 10px;
+  }
+
+  .org-parent-badge {
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  .view-toggle-btn {
+    padding: 5px 8px;
+    font-size: 10px;
   }
 }
 
