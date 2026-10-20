@@ -199,23 +199,70 @@
 
 .hero-visual-card {
   position: relative;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.75) 0%, rgba(228, 246, 254, 0.62) 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(228, 246, 254, 0.72) 100%);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  padding: var(--spacing-8) var(--spacing-7) var(--spacing-7);
+  padding: var(--spacing-6);
   border-radius: var(--radius-2xl);
   box-shadow: 
     0 30px 60px -12px rgba(1, 156, 220, 0.25),
     0 12px 24px -6px rgba(0, 0, 0, 0.04),
     inset 0 1px 1px rgba(255, 255, 255, 0.95),
     inset 0 -1px 1px rgba(1, 156, 220, 0.15);
-  border: 1px solid rgba(1, 156, 220, 0.32);
+  border: 1.5px solid rgba(1, 156, 220, 0.35);
   text-align: center;
   width: 100%;
-  max-width: 450px;
+  max-width: 460px;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.4s ease;
   z-index: 2;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-visual-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 
+    0 12px 28px -4px rgba(1, 156, 220, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(1, 156, 220, 0.3);
+  margin-bottom: var(--spacing-4);
+  background: linear-gradient(180deg, #d8f1fc 0%, #eef8fe 100%);
+}
+
+.hero-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-visual-badge-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 3;
+}
+
+.hero-overlay-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  box-shadow: 0 4px 12px rgba(1, 156, 220, 0.25);
+  border: 1px solid rgba(1, 156, 220, 0.3);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -229,7 +276,7 @@
   }
 
   .hero-visual-card:hover .hero-visual-img {
-    transform: scale(1.03);
+    transform: scale(1.04);
   }
 }
 
@@ -269,8 +316,16 @@
 }
 
 /* Floating Satellite Chips on the Hero Visual */
+.hero-chips-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
 .hero-floating-chip {
   position: absolute;
+  pointer-events: auto;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -548,26 +603,116 @@
 }
 
 /* --------------------------------------------------------------------------
-   Fabric Cut Work Spotlight Banner
+   Intro Pillars Visual Showcase
+   -------------------------------------------------------------------------- */
+.intro-pillars-banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 
+    0 12px 28px -4px rgba(1, 156, 220, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(1, 156, 220, 0.3);
+  margin-bottom: var(--spacing-5);
+  background: linear-gradient(180deg, #d8f1fc 0%, #eef8fe 100%);
+}
+
+.intro-pillars-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover .intro-pillars-banner-img {
+  transform: scale(1.03);
+}
+
+.intro-pillars-banner-overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 5px 12px;
+  border-radius: var(--radius-md);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(1, 156, 220, 0.3);
+  box-shadow: 0 4px 12px rgba(1, 156, 220, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Fabric Cut Work Spotlight Banner (With 3D Craft Visual)
    -------------------------------------------------------------------------- */
 .craft-spotlight-box {
-  background: linear-gradient(135deg, rgba(235, 248, 255, 0.82) 0%, rgba(215, 242, 254, 0.65) 100%);
+  background: linear-gradient(135deg, rgba(235, 248, 255, 0.88) 0%, rgba(215, 242, 254, 0.72) 100%);
   backdrop-filter: blur(24px) saturate(170%);
   -webkit-backdrop-filter: blur(24px) saturate(170%);
-  border: 1px solid rgba(1, 156, 220, 0.35);
-  border-radius: var(--radius-xl);
+  border: 1.5px solid rgba(1, 156, 220, 0.35);
+  border-radius: var(--radius-2xl);
   padding: var(--spacing-8);
   margin-bottom: var(--spacing-8);
   box-shadow: 
-    0 16px 40px -8px rgba(1, 156, 220, 0.2),
+    0 20px 48px -10px rgba(1, 156, 220, 0.22),
     inset 0 1px 2px rgba(255, 255, 255, 0.95);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 340px 1fr;
   align-items: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-6);
+  gap: var(--spacing-8);
   position: relative;
   overflow: hidden;
+}
+
+.craft-spotlight-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 12px 28px -4px rgba(1, 156, 220, 0.22);
+  border: 1.5px solid rgba(1, 156, 220, 0.3);
+  background: #e6f6fc;
+}
+
+.craft-spotlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.craft-spotlight-box:hover .craft-spotlight-img {
+  transform: scale(1.04);
+}
+
+.craft-spotlight-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(1, 156, 220, 0.3);
+  box-shadow: 0 4px 12px rgba(1, 156, 220, 0.2);
 }
 
 .craft-spotlight-box::before {
@@ -581,6 +726,8 @@
 }
 
 .craft-spotlight-content {
+  display: flex;
+  flex-direction: column;
   max-width: 680px;
 }
 
@@ -634,6 +781,11 @@
    Responsive Breakpoints
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
   .roadmap-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -641,46 +793,143 @@
   .roadmap-track-rail {
     display: none;
   }
+
+  .craft-spotlight-box {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-6);
+    gap: var(--spacing-6);
+  }
+
+  .craft-spotlight-visual {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .hero-section {
     padding-top: var(--spacing-6);
     padding-bottom: var(--spacing-10);
   }
 
+  /* Natural Mobile Flex Stack with Visual Prominence */
   .hero-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-8);
+    gap: var(--spacing-5);
   }
 
-  /* Keep hero content intact as its own cohesive container */
+  /* Using display: contents to allow harmonious mobile reordering */
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 600px;
+    display: contents;
   }
 
   .hero-meta-row {
-    margin-bottom: var(--spacing-3);
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: var(--spacing-2);
+    gap: 6px;
+    text-align: center;
   }
 
   .hero-title-main {
-    font-size: clamp(2rem, 6.5vw, 2.75rem);
+    order: 2;
+    font-size: clamp(1.85rem, 6.5vw, 2.5rem);
     margin-bottom: var(--spacing-4);
-    line-height: 1.15;
+    line-height: 1.16;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Centerpiece 3D Visual Artwork Card - Prominent, Large & High-Impact */
+  .hero-visual-canvas {
+    order: 3;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .hero-visual-card {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--spacing-4);
+    border-radius: var(--radius-xl);
+    box-sizing: border-box;
+    box-shadow: 
+      0 20px 45px -8px rgba(1, 156, 220, 0.28),
+      0 8px 20px -4px rgba(0, 0, 0, 0.04),
+      inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  }
+
+  .hero-visual-media-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: none;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .hero-visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .hero-visual-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-visual-sub {
+    font-size: 11px;
+    margin-bottom: var(--spacing-3);
+  }
+
+  .hero-mission-box {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  /* Inline Satellite Badges on Mobile (Clean, zero horizontal overflow) */
+  .hero-chips-wrap {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    width: 100%;
+    pointer-events: auto;
+  }
+
+  .hero-chips-wrap .hero-floating-chip {
+    position: static;
+    font-size: 11px;
+    padding: 6px 14px;
+    max-width: 100%;
+    box-shadow: 0 4px 14px rgba(1, 156, 220, 0.18);
   }
 
   .hero-description {
-    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-    margin-bottom: var(--spacing-6);
-    line-height: 1.6;
+    order: 4;
+    font-size: clamp(0.92rem, 2.8vw, 1.05rem);
+    margin-bottom: var(--spacing-5);
+    line-height: 1.65;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-cta-group {
+    order: 5;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -695,58 +944,15 @@
   }
 
   .hero-trust-strip {
+    order: 6;
     padding-top: var(--spacing-4);
     gap: var(--spacing-4);
     display: flex;
-    flex-wrap: wrap;
-  }
-
-  /* Centerpiece Visual Canvas & Card */
-  .hero-visual-canvas {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 14px 0;
-  }
-
-  .hero-visual-card {
+    justify-content: center;
     width: 100%;
-    max-width: 380px;
-    padding: var(--spacing-6) var(--spacing-5);
-    box-sizing: border-box;
-  }
-
-  .hero-visual-img {
-    max-height: 145px;
-    margin-bottom: var(--spacing-3);
-  }
-
-  .hero-visual-title {
-    font-size: 1.3rem;
-  }
-
-  /* Pinned Satellite Badges on Mobile (Kept intact within container bounds) */
-  .hero-floating-chip {
-    position: absolute;
-    font-size: 11px;
-    padding: 6px 12px;
-    z-index: 5;
-    max-width: 90%;
-    box-shadow: 0 8px 20px -3px rgba(1, 156, 220, 0.28);
-  }
-
-  .hero-floating-chip-1 {
-    top: 0px;
-    right: 8px;
-  }
-
-  .hero-floating-chip-2 {
-    bottom: 0px;
-    left: 8px;
+    border-top: 1px solid rgba(1, 156, 220, 0.2);
   }
 
   .roadmap-grid {
@@ -755,39 +961,61 @@
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    padding-top: var(--spacing-4);
+    padding-bottom: var(--spacing-8);
+  }
+
   .hero-title-main {
-    font-size: clamp(1.75rem, 7.5vw, 2.15rem);
+    font-size: clamp(1.65rem, 7.5vw, 2.1rem);
   }
 
   .hero-visual-card {
-    padding: var(--spacing-5) var(--spacing-4);
-    max-width: 100%;
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
   }
 
-  .hero-floating-chip {
+  .hero-visual-media-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-overlay-tag {
     font-size: 10px;
-    padding: 4px 10px;
-    gap: 5px;
+    padding: 3px 10px;
   }
 
-  .hero-floating-chip-1 {
-    top: -6px;
-    right: 4px;
-  }
-
-  .hero-floating-chip-2 {
-    bottom: -6px;
-    left: 4px;
-  }
-
-  .hero-meta-row {
-    gap: var(--spacing-2);
+  .hero-chips-wrap .hero-floating-chip {
+    font-size: 10px;
+    padding: 5px 10px;
   }
 
   .hero-live-pill,
   .hero-telemetry-badge {
     font-size: 10px;
-    padding: 3px 10px;
+    padding: 3px 8px;
+  }
+
+  .hero-meta-row {
+    gap: 4px;
+  }
+
+  .craft-spotlight-box {
+    padding: var(--spacing-4);
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title-main {
+    font-size: 1.55rem;
+  }
+
+  .hero-visual-media-frame {
+    aspect-ratio: 1 / 1;
+  }
+
+  .hero-visual-title {
+    font-size: 1.1rem;
   }
 }
 

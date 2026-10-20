@@ -6,6 +6,9 @@ import { contentService } from '../services/contentService';
 import { getFullImageUrl } from '../utils/imageUrl';
 import { animateHeroEntrance, cleanupGsapContext } from '../utils/gsapAnimations';
 import logoImg from '../assets/logo.jpeg';
+import heroVisualImg from '../assets/hero_hope_recovery.jpg';
+import clinicalDetoxImg from '../assets/clinical_detox_visual.jpg';
+import vocationalSkillsImg from '../assets/vocational_skills_visual.jpg';
 import './HomePage.css';
 
 export const HomePage = () => {
@@ -182,41 +185,63 @@ export const HomePage = () => {
 
                 {/* Hero Visual Composition with Layered Satellite Badges */}
                 <div className="hero-visual-canvas">
-                  {/* Floating Satellite Chip 1 (Top-Right) */}
-                  <div className="hero-floating-chip hero-floating-chip-1">
-                    <span className="floating-icon-cyan">✨</span>
-                    <span>150+ Recovered Alumni</span>
-                  </div>
-
-                  {/* Floating Satellite Chip 2 (Bottom-Left) */}
-                  <div className="hero-floating-chip hero-floating-chip-2">
-                    <span className="floating-icon-cyan">🛡️</span>
-                    <span>100% Medical Confidentiality</span>
+                  {/* Floating Satellite Chips (Desktop absolute, mobile flex) */}
+                  <div className="hero-chips-wrap">
+                    <div className="hero-floating-chip hero-floating-chip-1">
+                      <span className="floating-icon-cyan">✨</span>
+                      <span>150+ Recovered Alumni</span>
+                    </div>
+                    <div className="hero-floating-chip hero-floating-chip-2">
+                      <span className="floating-icon-cyan">🛡️</span>
+                      <span>100% Medical Confidentiality</span>
+                    </div>
                   </div>
 
                   {/* Centerpiece Frosted Card */}
                   <div className="hero-visual-card">
-                    <img
-                      src={getFullImageUrl(hero?.heroImage) || navbar?.logoUrl || logoImg}
-                      alt={navbar?.brandName || 'Khyber Rehabilitation Center'}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = navbar?.logoUrl || logoImg;
-                      }}
-                      className="hero-visual-img"
-                    />
-                    <h3 className="hero-visual-title">
-                      {navbar?.brandName || 'Khyber Rehabilitation Center'}
-                    </h3>
-                    <p className="hero-visual-sub">
-                      📍 {navbar?.topBarText || 'Naguman, Charsadda Road, Near Gulbela Peshawar'}
-                    </p>
-                    <div className="hero-mission-box">
-                      <strong style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '2px' }}>
-                        {hero?.cardMissionLabel || 'Clinical Mission:'}
-                      </strong>
-                      {hero?.cardMissionText ||
-                        'Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.'}
+                    <div className="hero-visual-media-frame">
+                      <img
+                        src={
+                          hero?.heroImage && !hero.heroImage.includes('WhatsAppImage2026-10-12')
+                            ? getFullImageUrl(hero.heroImage)
+                            : heroVisualImg
+                        }
+                        alt="Khyber Rehabilitation Center - Pathway to Sobriety & Recovery"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = heroVisualImg;
+                        }}
+                        className="hero-visual-img"
+                        loading="eager"
+                      />
+                      <div className="hero-visual-badge-overlay">
+                        <span className="hero-overlay-tag">
+                          <span>🌱</span> Pathway of Dignity & Recovery
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="hero-visual-info">
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '4px' }}>
+                        <img
+                          src={navbar?.logoUrl || logoImg}
+                          alt="KRC Crest"
+                          style={{ width: '26px', height: '26px', objectFit: 'contain', borderRadius: '4px', background: '#ffffff', padding: '2px', border: '1px solid rgba(1, 156, 220, 0.25)' }}
+                        />
+                        <h3 className="hero-visual-title" style={{ margin: 0 }}>
+                          {navbar?.brandName || 'Khyber Rehabilitation Center'}
+                        </h3>
+                      </div>
+                      <p className="hero-visual-sub">
+                        📍 {navbar?.topBarText || 'Naguman, Charsadda Road, Near Gulbela Peshawar'}
+                      </p>
+                      <div className="hero-mission-box">
+                        <strong style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '3px' }}>
+                          {hero?.cardMissionLabel || 'Clinical Mission:'}
+                        </strong>
+                        {hero?.cardMissionText ||
+                          'Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.'}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -282,6 +307,18 @@ export const HomePage = () => {
                 </div>
                 <div>
                   <div className="glass-card" style={{ padding: 'var(--spacing-8)' }}>
+                    <div className="intro-pillars-banner">
+                      <img
+                        src={clinicalDetoxImg}
+                        alt="Clinical Detoxification & Patient Healthcare"
+                        className="intro-pillars-banner-img"
+                        loading="lazy"
+                      />
+                      <div className="intro-pillars-banner-overlay">
+                        <span>🛡️ Medically Supervised Inpatient Care • 24/7 Monitoring</span>
+                      </div>
+                    </div>
+
                     <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary)', marginBottom: 'var(--spacing-6)', fontWeight: 800 }}>
                       {homepageIntro?.pillarsTitle || 'Our Three Core Pillars'}
                     </h3>
@@ -441,6 +478,18 @@ export const HomePage = () => {
 
               {/* Master Craft Spotlight Box */}
               <div className="craft-spotlight-box">
+                <div className="craft-spotlight-visual">
+                  <img
+                    src={vocationalSkillsImg}
+                    alt="Fabric Cut Work Workshop & Vocational Tailoring"
+                    className="craft-spotlight-img"
+                    loading="lazy"
+                  />
+                  <div className="craft-spotlight-badge">
+                    <span>✂️ Master Trade Atelier</span>
+                  </div>
+                </div>
+
                 <div className="craft-spotlight-content">
                   <span className="tag-pill">🎨 Specialized Master Atelier</span>
                   <h3 style={{ fontSize: '1.35rem', color: 'var(--color-gray-900)', marginTop: '8px', marginBottom: '6px', fontWeight: 800 }}>
@@ -454,12 +503,14 @@ export const HomePage = () => {
                     <span className="telemetry-badge" style={{ fontSize: '11px' }}>🪡 Cutwork Needlework</span>
                     <span className="telemetry-badge" style={{ fontSize: '11px' }}>👔 Bespoke Tailoring</span>
                   </div>
+                  <div style={{ marginTop: 'var(--spacing-5)' }}>
+                    <Link to="/products">
+                      <Button variant="primary" size="md" className="btn-pill btn-magnetic">
+                        View Handcrafted Catalog →
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-                <Link to="/products">
-                  <Button variant="primary" size="md" className="btn-pill btn-magnetic">
-                    View Handcrafted Catalog →
-                  </Button>
-                </Link>
               </div>
 
               <div className="grid-3">

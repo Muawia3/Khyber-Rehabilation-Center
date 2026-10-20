@@ -4,6 +4,7 @@ import { SectionHeader, Card, Button, Alert, LoadingSpinner, EmptyState } from '
 import { useDocumentTitle } from '../hooks';
 import { CONTACT_INFO } from '../utils/constants';
 import { contentService } from '../services/contentService';
+import vocationalSkillsImg from '../assets/vocational_skills_visual.jpg';
 
 const FALLBACK_CATALOG = [
   {
@@ -110,6 +111,66 @@ export const ProductsPage = () => {
               <strong>Server Notice:</strong> {apiError} (Displaying offline catalog structure until PostgreSQL server is active)
             </Alert>
           )}
+
+          {/* Vocational Craftsmanship Showcase Banner */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(235, 248, 255, 0.88) 0%, rgba(215, 242, 254, 0.72) 100%)',
+            border: '1.5px solid rgba(1, 156, 220, 0.35)',
+            borderRadius: 'var(--radius-2xl)',
+            padding: 'var(--spacing-6)',
+            marginBottom: 'var(--spacing-8)',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: 'var(--spacing-6)',
+            alignItems: 'center',
+            boxShadow: '0 20px 48px -10px rgba(1, 156, 220, 0.22)'
+          }}>
+            <div style={{
+              position: 'relative',
+              borderRadius: 'var(--radius-xl)',
+              overflow: 'hidden',
+              aspectRatio: '16 / 10',
+              border: '1.5px solid rgba(1, 156, 220, 0.3)',
+              boxShadow: '0 12px 28px -4px rgba(1, 156, 220, 0.22)',
+              background: '#e6f6fc'
+            }}>
+              <img
+                src={vocationalSkillsImg}
+                alt="Vocational Fabric Cut Work Workshop & Artisan Skills"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                loading="eager"
+              />
+              <div style={{
+                position: 'absolute',
+                bottom: '10px',
+                left: '10px',
+                background: 'rgba(255, 255, 255, 0.94)',
+                backdropFilter: 'blur(10px)',
+                padding: '4px 12px',
+                borderRadius: 'var(--radius-full)',
+                fontSize: '11px',
+                fontWeight: 700,
+                color: 'var(--color-primary-dark)',
+                border: '1px solid rgba(1, 156, 220, 0.3)'
+              }}>
+                ✂️ Master Craft Atelier
+              </div>
+            </div>
+            <div>
+              <span className="tag-pill" style={{ marginBottom: '8px' }}>🎨 Vocational Empowerment</span>
+              <h3 style={{ fontSize: '1.45rem', color: 'var(--color-gray-900)', fontWeight: 800, marginBottom: 'var(--spacing-2)' }}>
+                Handcrafted with Purpose: Textile & Cutwork Mastery
+              </h3>
+              <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-gray-700)', lineHeight: 1.7, marginBottom: 'var(--spacing-4)' }}>
+                Under the guidance of master craftsmen, patients in Phase 3 learn precision pattern designing, geometric cutwork embroidery, and commercial tailoring. Every product purchase directly generates ethical trainee stipends and funds post-discharge micro-enterprises.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                <span className="telemetry-badge" style={{ fontSize: '11px' }}>✓ 100% Patient Handcrafted</span>
+                <span className="telemetry-badge" style={{ fontSize: '11px' }}>✓ Fair-Trade Artisan Wages</span>
+                <span className="telemetry-badge" style={{ fontSize: '11px' }}>✓ Ethical Reintegration Fund</span>
+              </div>
+            </div>
+          </div>
 
           {/* Transparency Disclaimer Notice */}
           <div

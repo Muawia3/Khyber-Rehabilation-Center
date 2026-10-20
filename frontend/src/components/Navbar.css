@@ -596,3 +596,49 @@
     visibility: visible;
   }
 }
+
+@media (max-width: 600px) {
+  .top-bar-container {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .top-bar-right {
+    display: none;
+  }
+
+  .header-container {
+    height: 68px;
+    gap: var(--spacing-2);
+  }
+
+  .brand-logo {
+    height: 40px;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+    white-space: normal;
+    line-height: 1.1;
+  }
+
+  .brand-subtitle {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logo {
+    height: 36px;
+  }
+
+  .brand-title {
+    font-size: 0.85rem;
+  }
+
+  .header-actions .btn-sm {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}
+
