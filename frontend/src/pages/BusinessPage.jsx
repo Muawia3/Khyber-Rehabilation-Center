@@ -50,8 +50,8 @@ export const BusinessPage = () => {
       {/* The Social Enterprise Model */}
       <section className="section-padding bg-white">
         <div className="container">
-          {apiError && (
-            <Alert type="warning" title="Live Database Status Notice">
+          {apiError && import.meta.env.DEV && (
+            <Alert type="warning" title="Development Status Notice">
               <strong>Server Notice:</strong> {apiError} (Displaying offline enterprise model until PostgreSQL connection is active)
             </Alert>
           )}

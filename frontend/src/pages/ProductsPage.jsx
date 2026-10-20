@@ -105,8 +105,8 @@ export const ProductsPage = () => {
       {/* Catalog & Filter Section */}
       <section className="section-padding bg-white">
         <div className="container">
-          {apiError && (
-            <Alert type="warning" title="Live Database Status Notice">
+          {apiError && import.meta.env.DEV && (
+            <Alert type="warning" title="Development Status Notice">
               <strong>Server Notice:</strong> {apiError} (Displaying offline catalog structure until PostgreSQL server is active)
             </Alert>
           )}

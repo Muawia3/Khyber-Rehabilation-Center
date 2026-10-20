@@ -1,21 +1,29 @@
 // Dynamically determine the API Base URL:
-// 1. Explicit VITE_API_BASE_URL env var if provided
-// 2. In production (e.g. Vercel deployment), relative path '/api/v1' to prevent mixed-content/localhost errors on mobile
-// 3. In development, connects to localhost:5000 or host IP if accessed from a mobile phone on the same Wi-Fi
+// 1. Explicit external VITE_API_BASE_URL (if valid public URL, not localhost)
+// 2. In production / deployed domain (e.g. Vercel), ignores local .env localhost and uses '/api/v1'
+// 3. When accessed from mobile over local Wi-Fi, targets http://<laptop-ip>:5000/api/v1
+// 4. In local development on laptop, connects to http://localhost:5000/api/v1
 const getBaseUrl = () => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    return import.meta.env.VITE_API_BASE_URL.replace(/\/+$/, '');
-  }
+  const envUrl = import.meta.env.VITE_API_BASE_URL;
+
   if (typeof window !== 'undefined') {
-    if (import.meta.env.PROD) {
+    const isCurrentHostLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+    // If an external production API URL is provided (e.g. https://api.khyberrehab.org/api/v1)
+    if (envUrl && !envUrl.includes('localhost') && !envUrl.includes('127.0.0.1')) {
+      return envUrl.replace(/\/+$/, '');
+    }
+
+    // On deployed production domains (like Vercel) or when accessed on mobile
+    if (import.meta.env.PROD || !isCurrentHostLocal) {
+      if (!import.meta.env.PROD && window.location.hostname) {
+        return `http://${window.location.hostname}:5000/api/v1`;
+      }
       return '/api/v1';
     }
-    const hostname = window.location.hostname;
-    if (hostname && hostname !== 'localhost' && hostname !== '127.0.0.1') {
-      return `http://${hostname}:5000/api/v1`;
-    }
   }
-  return 'http://localhost:5000/api/v1';
+
+  return envUrl ? envUrl.replace(/\/+$/, '') : 'http://localhost:5000/api/v1';
 };
 
 const BASE_URL = getBaseUrl();

@@ -136,8 +136,8 @@ export const SuccessStoriesPage = () => {
       {/* Patient Dignity & Confidentiality Policy */}
       <section className="section-padding bg-white">
         <div className="container">
-          {apiError && (
-            <Alert type="warning" title="Live Database Status Notice">
+          {apiError && import.meta.env.DEV && (
+            <Alert type="warning" title="Development Status Notice">
               <strong>Server Notice:</strong> {apiError} (Displaying offline recovery case outlines until PostgreSQL connection is active)
             </Alert>
           )}
