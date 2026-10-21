@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { SectionHeader, Button, Card, RecoveryVideoSection } from '../components';
+import { SectionHeader, Button, Card } from '../components';
 import { useDocumentTitle, useSiteContent } from '../hooks';
 import { contentService } from '../services/contentService';
 import { getFullImageUrl } from '../utils/imageUrl';
@@ -282,82 +282,75 @@ export const HomePage = () => {
 
       case 'intro':
         return (
-          <React.Fragment key={sec.id}>
-            <section className="section-padding bg-white bg-noise">
-              <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-                <div className="grid-2" style={{ alignItems: 'center', gap: 'var(--spacing-12)' }}>
-                  <div>
-                    <SectionHeader
-                      align="left"
-                      subtitle={homepageIntro?.badge || 'Our Mission in Peshawar'}
-                      title={homepageIntro?.title || 'A Dignified Path Toward Permanent Sobriety'}
-                      description={
-                        homepageIntro?.description ||
-                        'At Khyber Rehabilitation Center, we treat individuals suffering from addiction and mental health challenges with unconditional empathy and clinical rigor.'
-                      }
-                    />
-                    <p style={{ color: 'var(--color-gray-600)', marginBottom: 'var(--spacing-6)', lineHeight: 1.8, fontSize: 'var(--font-size-md)' }}>
-                      {homepageIntro?.paragraphText ||
-                        'Addiction is a chronic disease requiring structured medical stabilization, psychiatric psychotherapy, family counseling, and socio-economic support. Our multidisciplinary team works tirelessly to restore self-respect.'}
-                    </p>
-                    <Link to={homepageIntro?.btnLink || '/about'}>
-                      <Button variant="outline" size="md" className="btn-pill btn-magnetic">
-                        {homepageIntro?.btnText || 'Learn More About Our Center →'}
-                      </Button>
-                    </Link>
-                  </div>
-                  <div>
-                    <div className="glass-card" style={{ padding: 'var(--spacing-8)' }}>
-                      <div className="intro-pillars-banner">
-                        <img
-                          src={clinicalDetoxImg}
-                          alt="Clinical Detoxification & Patient Healthcare"
-                          className="intro-pillars-banner-img"
-                          loading="lazy"
-                        />
-                        <div className="intro-pillars-banner-overlay">
-                          <span>🛡️ Medically Supervised Inpatient Care • 24/7 Monitoring</span>
+          <section key={sec.id} className="section-padding bg-white bg-noise">
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+              <div className="grid-2" style={{ alignItems: 'center', gap: 'var(--spacing-12)' }}>
+                <div>
+                  <SectionHeader
+                    align="left"
+                    subtitle={homepageIntro?.badge || 'Our Mission in Peshawar'}
+                    title={homepageIntro?.title || 'A Dignified Path Toward Permanent Sobriety'}
+                    description={
+                      homepageIntro?.description ||
+                      'At Khyber Rehabilitation Center, we treat individuals suffering from addiction and mental health challenges with unconditional empathy and clinical rigor.'
+                    }
+                  />
+                  <p style={{ color: 'var(--color-gray-600)', marginBottom: 'var(--spacing-6)', lineHeight: 1.8, fontSize: 'var(--font-size-md)' }}>
+                    {homepageIntro?.paragraphText ||
+                      'Addiction is a chronic disease requiring structured medical stabilization, psychiatric psychotherapy, family counseling, and socio-economic support. Our multidisciplinary team works tirelessly to restore self-respect.'}
+                  </p>
+                  <Link to={homepageIntro?.btnLink || '/about'}>
+                    <Button variant="outline" size="md" className="btn-pill btn-magnetic">
+                      {homepageIntro?.btnText || 'Learn More About Our Center →'}
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <div className="glass-card" style={{ padding: 'var(--spacing-8)' }}>
+                    <div className="intro-pillars-banner">
+                      <img
+                        src={clinicalDetoxImg}
+                        alt="Clinical Detoxification & Patient Healthcare"
+                        className="intro-pillars-banner-img"
+                        loading="lazy"
+                      />
+                      <div className="intro-pillars-banner-overlay">
+                        <span>🛡️ Medically Supervised Inpatient Care • 24/7 Monitoring</span>
+                      </div>
+                    </div>
+
+                    <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary)', marginBottom: 'var(--spacing-6)', fontWeight: 800 }}>
+                      {homepageIntro?.pillarsTitle || 'Our Three Core Pillars'}
+                    </h3>
+                    <div className="pillar-card-wrap">
+                      <div className="pillar-item">
+                        <div className="pillar-num">01</div>
+                        <div className="pillar-content">
+                          <h4>{homepageIntro?.pillar1Title || 'Medical Detoxification'}</h4>
+                          <p>{homepageIntro?.pillar1Desc || 'Supervised clinical withdrawal in safe residential facilities with 24/7 vitals surveillance.'}</p>
                         </div>
                       </div>
-
-                      <h3 style={{ fontSize: '1.35rem', color: 'var(--color-primary)', marginBottom: 'var(--spacing-6)', fontWeight: 800 }}>
-                        {homepageIntro?.pillarsTitle || 'Our Three Core Pillars'}
-                      </h3>
-                      <div className="pillar-card-wrap">
-                        <div className="pillar-item">
-                          <div className="pillar-num">01</div>
-                          <div className="pillar-content">
-                            <h4>{homepageIntro?.pillar1Title || 'Medical Detoxification'}</h4>
-                            <p>{homepageIntro?.pillar1Desc || 'Supervised clinical withdrawal in safe residential facilities with 24/7 vitals surveillance.'}</p>
-                          </div>
+                      <div className="pillar-item">
+                        <div className="pillar-num">02</div>
+                        <div className="pillar-content">
+                          <h4>{homepageIntro?.pillar2Title || 'Psychological Psychotherapy'}</h4>
+                          <p>{homepageIntro?.pillar2Desc || 'Cognitive Behavioral Therapy (CBT), trauma counseling, and personalized relapse prevention plans.'}</p>
                         </div>
-                        <div className="pillar-item">
-                          <div className="pillar-num">02</div>
-                          <div className="pillar-content">
-                            <h4>{homepageIntro?.pillar2Title || 'Psychological Psychotherapy'}</h4>
-                            <p>{homepageIntro?.pillar2Desc || 'Cognitive Behavioral Therapy (CBT), trauma counseling, and personalized relapse prevention plans.'}</p>
-                          </div>
-                        </div>
-                        <div className="pillar-item">
-                          <div className="pillar-num">03</div>
-                          <div className="pillar-content">
-                            <h4>{homepageIntro?.pillar3Title || 'Fabric Cut Work & Small Businesses'}</h4>
-                            <p>{homepageIntro?.pillar3Desc || 'Specialized Fabric Cut Work craftsmanship and sustainable small businesses (Loader Rickshaws, Chinchi Rickshaws, Livestock) empowering patients with self-reliance.'}</p>
-                          </div>
+                      </div>
+                      <div className="pillar-item">
+                        <div className="pillar-num">03</div>
+                        <div className="pillar-content">
+                          <h4>{homepageIntro?.pillar3Title || 'Fabric Cut Work & Small Businesses'}</h4>
+                          <p>{homepageIntro?.pillar3Desc || 'Specialized Fabric Cut Work craftsmanship and sustainable small businesses (Loader Rickshaws, Chinchi Rickshaws, Livestock) empowering patients with self-reliance.'}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-            {/* Cinematic Recovery Video Story Section */}
-            <RecoveryVideoSection />
-          </React.Fragment>
+            </div>
+          </section>
         );
-
-      case 'video':
-        return <RecoveryVideoSection key={sec.id} />;
 
       case 'treatment':
         return (

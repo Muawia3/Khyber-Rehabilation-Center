@@ -11,5 +11,4 @@ export * from './LeadershipTree.jsx';
 export * from './ScrollToTopButton.jsx';
 export * from './ScrollToTop.jsx';
 export * from './InitialLoader.jsx';
-export * from './RecoveryVideoSection.jsx';
 
