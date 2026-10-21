@@ -53,11 +53,28 @@ export const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
   // Close dropdown and menu on pathname change
   useEffect(() => {
     setDropdownOpen(false);
     setIsOpen(false);
   }, [location.pathname]);
+
+  // Track window scroll for active glassmorphism contrast enhancement
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 15) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleDropdown = (e) => {
     e.stopPropagation();
@@ -65,7 +82,7 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
       {/* Top Notification Bar for Healthcare Trust & Emergency Notice (Controlled via Admin) */}
       {showTopBar && (
         <div className="top-bar">

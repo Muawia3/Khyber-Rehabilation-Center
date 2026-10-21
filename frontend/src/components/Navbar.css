@@ -7,14 +7,25 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(240, 249, 255, 0.72) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(240, 249, 255, 0.78) 100%);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(1, 156, 220, 0.24);
+  border-bottom: 1px solid rgba(1, 156, 220, 0.22);
   box-shadow: 
     0 8px 30px -4px rgba(1, 156, 220, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  transition: all var(--transition-base);
+  transition: background var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-bottom: 1px solid rgba(1, 156, 220, 0.35);
+  box-shadow: 
+    0 14px 40px -8px rgba(1, 156, 220, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 /* --------------------------------------------------------------------------
