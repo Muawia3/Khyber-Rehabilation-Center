@@ -15,11 +15,17 @@ export const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
   const prevPathRef = useRef(pathname);
 
-  // Set browser history scroll restoration to manual so browser back/forward
-  // navigation doesn't erroneously retain scrolled footer positions on new pages
+  // Set browser history scroll restoration to manual and ensure initial page load/refresh starts at top (0, 0)
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      if (!hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
     }
   }, []);
 

@@ -15,6 +15,15 @@ export const App = () => {
     return () => clearTimeout(failsafe);
   }, []);
 
+  useEffect(() => {
+    // Ensure viewport starts at the top when initial loader concludes
+    if (isLoaderFinished && typeof window !== 'undefined' && !window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, [isLoaderFinished]);
+
   return (
     <BrowserRouter>
       {/* Global Navigation Scroll Manager (always scrolls to top on route change) */}

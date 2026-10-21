@@ -21,12 +21,23 @@ export const InitialLoader = ({ onComplete }) => {
   const brandName = navbar?.brandName || 'Khyber Rehabilitation Center';
   const logoSrc = navbar?.logoUrl || logoImg;
 
-  // Lock body scroll while loader is visible
+  // Lock body scroll while loader is visible and keep viewport at top
   useEffect(() => {
+    if (typeof window !== 'undefined' && !window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+
     if (isMounted) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      if (typeof window !== 'undefined' && !window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
     }
     return () => {
       document.body.style.overflow = '';
