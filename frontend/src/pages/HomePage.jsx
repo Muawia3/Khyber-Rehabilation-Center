@@ -206,17 +206,18 @@ export const HomePage = () => {
                             ? getFullImageUrl(hero.heroImage)
                             : heroVisualImg
                         }
-                        alt="Khyber Rehabilitation Center - Pathway to Sobriety & Recovery"
+                        alt="Khyber Rehabilitation Center - Inpatient Recovery Ward Peshawar"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = heroVisualImg;
                         }}
                         className="hero-visual-img"
                         loading="eager"
+                        decoding="async"
                       />
                       <div className="hero-visual-badge-overlay">
                         <span className="hero-overlay-tag">
-                          <span>🌱</span> Pathway of Dignity & Recovery
+                          <span>🏥</span> Modern Inpatient Recovery Ward
                         </span>
                       </div>
                     </div>
@@ -310,9 +311,10 @@ export const HomePage = () => {
                     <div className="intro-pillars-banner">
                       <img
                         src={clinicalDetoxImg}
-                        alt="Clinical Detoxification & Patient Healthcare"
+                        alt="Clinical Medical Assessment & Detoxification Supervision"
                         className="intro-pillars-banner-img"
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
                       />
                       <div className="intro-pillars-banner-overlay">
                         <span>🛡️ Medically Supervised Inpatient Care • 24/7 Monitoring</span>
@@ -481,9 +483,10 @@ export const HomePage = () => {
                 <div className="craft-spotlight-visual">
                   <img
                     src={vocationalSkillsImg}
-                    alt="Fabric Cut Work Workshop & Vocational Tailoring"
+                    alt="Fabric Cut Work Workshop & Vocational Tailoring Trades"
                     className="craft-spotlight-img"
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                   />
                   <div className="craft-spotlight-badge">
                     <span>✂️ Master Trade Atelier</span>

@@ -99,10 +99,10 @@
   --glass-reflection: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 1px 0 rgba(1, 156, 220, 0.12);
   --glass-reflection-hover: inset 0 1px 2px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 2px 0 rgba(1, 156, 220, 0.22);
   
-  /* Backdrop Blur Scales */
-  --glass-blur-sm: blur(10px);
-  --glass-blur: blur(18px);
-  --glass-blur-lg: blur(28px);
+  /* Backdrop Blur Scales - Performance Optimized */
+  --glass-blur-sm: blur(6px);
+  --glass-blur: blur(12px);
+  --glass-blur-lg: blur(16px);
 
   /* Gradients & Ambient Lighting */
   --gradient-brand: linear-gradient(135deg, #019CDC 0%, #0077aa 100%);
