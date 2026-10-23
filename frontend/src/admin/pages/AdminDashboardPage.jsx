@@ -19,24 +19,35 @@ export const AdminDashboardPage = () => {
     Promise.allSettled([
       contentService.getDashboardStats(),
       contentService.checkHealth(),
-    ]).then(([statsRes, healthRes]) => {
-      if (!isMounted) return;
+    ])
+      .then(([statsRes, healthRes]) => {
+        if (!isMounted) return;
 
-      if (healthRes.status === 'fulfilled') {
-        setHealthInfo(healthRes.value.data);
-      }
+        try {
+          if (healthRes.status === 'fulfilled' && healthRes.value?.data) {
+            setHealthInfo(healthRes.value.data);
+          }
 
-      if (statsRes.status === 'fulfilled') {
-        setStats(statsRes.value.data);
-      } else {
-        const errorMsg =
-          statsRes.reason?.message ||
-          'Database unreachable. Real metrics will display once PostgreSQL is connected.';
-        setApiNotice(errorMsg);
-      }
-
-      setLoading(false);
-    });
+          if (statsRes.status === 'fulfilled' && statsRes.value?.data) {
+            setStats(statsRes.value.data);
+          } else {
+            const errorMsg =
+              statsRes.reason?.message ||
+              'Database unreachable. Real metrics will display once PostgreSQL is connected.';
+            setApiNotice(errorMsg);
+          }
+        } catch (parseErr) {
+          setApiNotice(parseErr.message || 'Error processing dashboard statistics.');
+        } finally {
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (isMounted) {
+          setApiNotice(err.message || 'Unable to query admin dashboard metrics.');
+          setLoading(false);
+        }
+      });
 
     return () => {
       isMounted = false;

@@ -16,7 +16,7 @@ export const SuccessStoriesPage = () => {
       .getStories()
       .then((res) => {
         if (isMounted) {
-          setDbStories(res.data || []);
+          setDbStories(res?.data || []);
           setApiError(null);
         }
       })

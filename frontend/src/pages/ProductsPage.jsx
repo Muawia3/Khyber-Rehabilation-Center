@@ -66,7 +66,7 @@ export const ProductsPage = () => {
       .getProducts(selectedCategory)
       .then((res) => {
         if (isMounted) {
-          setDbProducts(res.data || []);
+          setDbProducts(res?.data || []);
           setApiError(null);
         }
       })

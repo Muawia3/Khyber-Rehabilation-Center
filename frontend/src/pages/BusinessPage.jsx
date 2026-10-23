@@ -16,7 +16,7 @@ export const BusinessPage = () => {
       .getBusiness()
       .then((res) => {
         if (isMounted) {
-          setDbBusiness(res.data || []);
+          setDbBusiness(res?.data || []);
           setApiError(null);
         }
       })

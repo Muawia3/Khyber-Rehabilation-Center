@@ -16,7 +16,7 @@ export const SkillsPage = () => {
       .getSkills()
       .then((res) => {
         if (isMounted) {
-          setDbSkills(res.data || []);
+          setDbSkills(res?.data || []);
           setApiError(null);
         }
       })

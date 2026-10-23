@@ -65,6 +65,16 @@ export const apiClient = async (endpoint, { body, ...customConfig } = {}, retrie
       data = null;
     }
 
+    const contentType = response.headers.get('content-type') || '';
+    const isHtmlResponse = contentType.includes('text/html');
+
+    if (isHtmlResponse) {
+      const error = new Error('The API endpoint returned an HTML web page instead of JSON data. Ensure the backend Express server is running on port 5000.');
+      error.statusCode = 502;
+      error.isHtmlResponse = true;
+      throw error;
+    }
+
     if (!response.ok) {
       let errorMessage = data?.message || data?.errors?.join(', ');
       if (!errorMessage) {
@@ -80,6 +90,11 @@ export const apiClient = async (endpoint, { body, ...customConfig } = {}, retrie
       error.statusCode = response.status;
       error.details = data?.errors || null;
       throw error;
+    }
+
+    // If body was empty or not an object, return safe non-null structure
+    if (data === null || typeof data !== 'object') {
+      return { success: true, statusCode: response.status, data: data ?? null };
     }
 
     return data;

@@ -18,7 +18,7 @@ export const TreatmentPage = () => {
       .getTreatments()
       .then((res) => {
         if (isMounted) {
-          setDbTreatments(res.data || []);
+          setDbTreatments(res?.data || []);
           setApiError(null);
         }
       })

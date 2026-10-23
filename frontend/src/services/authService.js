@@ -66,8 +66,9 @@ export const authService = {
     try {
       return await apiClient('/auth/me');
     } catch (err) {
-      // If backend is on static host (404/405/offline), retain current stored administrator profile
-      if (err.statusCode === 405 || err.statusCode === 404 || err.isNetworkError) {
+      const isFallbackToken = (localStorage.getItem('khyber_token') || '').startsWith('krc_staff_session_');
+      // If backend is on static host (404/405/offline) or using fallback session token, retain current stored administrator profile
+      if (isFallbackToken || err.statusCode === 405 || err.statusCode === 404 || err.isNetworkError) {
         try {
           const stored = localStorage.getItem('khyber_admin_user');
           if (stored) {

@@ -37,7 +37,7 @@ export const AdminInquiriesPage = () => {
     inquiryService
       .getInquiries(params)
       .then((res) => {
-        const list = res.data?.inquiries || [];
+        const list = res?.data?.inquiries || (Array.isArray(res?.data) ? res.data : []);
         setInquiries(list);
         if (list.length > 0) {
           // If previous selection still exists in the list, keep it; else select first

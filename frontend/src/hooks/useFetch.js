@@ -12,7 +12,7 @@ export const useFetch = (fetchFunction, dependencies = []) => {
     fetchFunction()
       .then((res) => {
         if (isMounted) {
-          setData(res.data);
+          setData(res?.data ?? res ?? null);
           setError(null);
         }
       })
