@@ -1182,35 +1182,110 @@ export const AdminContentPage = () => {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--spacing-4)', marginTop: 'var(--spacing-3)' }}>
-              <div className="form-group">
-                <label className="form-label">Trust Badge 1</label>
-                <input
-                  type="text"
-                  value={heroForm?.badge1 || ''}
-                  onChange={(e) => setHeroForm({ ...heroForm, badge1: e.target.value })}
-                />
+            {/* Trust Badges & Satellite Chips Section with Display Options */}
+            <div style={{ padding: 'var(--spacing-4)', backgroundColor: 'var(--color-gray-50)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-gray-200)', marginTop: 'var(--spacing-4)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: 'var(--spacing-3)' }}>
+                <h4 style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-gray-800)', margin: 0, fontWeight: 700 }}>
+                  Clinical Trust Badges & Satellite Chips
+                </h4>
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                  <label style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: 'var(--font-size-xs)', cursor: 'pointer', fontWeight: 600 }}>
+                    <input
+                      type="checkbox"
+                      checked={heroForm?.showTrustBadges !== false}
+                      onChange={(e) => setHeroForm({ ...heroForm, showTrustBadges: e.target.checked })}
+                    />
+                    Enable Trust Badges
+                  </label>
+                  <label style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: 'var(--font-size-xs)', cursor: 'pointer', fontWeight: 600 }}>
+                    <input
+                      type="checkbox"
+                      checked={heroForm?.showFloatingChips !== false}
+                      onChange={(e) => setHeroForm({ ...heroForm, showFloatingChips: e.target.checked })}
+                    />
+                    Enable Floating Satellite Badges
+                  </label>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label className="form-label">Trust Badge 2</label>
-                <input
-                  type="text"
-                  value={heroForm?.badge2 || ''}
-                  onChange={(e) => setHeroForm({ ...heroForm, badge2: e.target.value })}
-                />
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--spacing-4)' }}>
+                <div className="form-group">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <label className="form-label" style={{ margin: 0 }}>Trust Badge 1</label>
+                    {heroForm?.badge1 && (
+                      <button
+                        type="button"
+                        onClick={() => setHeroForm({ ...heroForm, badge1: '' })}
+                        style={{ background: 'none', border: 'none', color: 'var(--color-danger)', fontSize: '11px', cursor: 'pointer', fontWeight: 600, padding: 0 }}
+                      >
+                        ✕ Remove Badge 1
+                      </button>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="e.g. 100% Confidential Medical Care (Leave empty to hide)"
+                    value={heroForm?.badge1 || ''}
+                    onChange={(e) => setHeroForm({ ...heroForm, badge1: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <label className="form-label" style={{ margin: 0 }}>Trust Badge 2</label>
+                    {heroForm?.badge2 && (
+                      <button
+                        type="button"
+                        onClick={() => setHeroForm({ ...heroForm, badge2: '' })}
+                        style={{ background: 'none', border: 'none', color: 'var(--color-danger)', fontSize: '11px', cursor: 'pointer', fontWeight: 600, padding: 0 }}
+                      >
+                        ✕ Remove Badge 2
+                      </button>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="e.g. Emergency 24/7 Admissions (Leave empty to hide)"
+                    value={heroForm?.badge2 || ''}
+                    onChange={(e) => setHeroForm({ ...heroForm, badge2: e.target.value })}
+                  />
+                </div>
               </div>
             </div>
 
+            {/* Hero Card Mission Tagline Box with Display Toggle */}
             <div style={{ padding: 'var(--spacing-4)', backgroundColor: 'var(--color-primary-50)', borderRadius: 'var(--radius-md)', border: '1px dashed var(--color-primary-300)', marginTop: 'var(--spacing-4)' }}>
-              <h4 style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-primary)', marginTop: 0, marginBottom: 'var(--spacing-3)' }}>
-                Hero Card Mission Tagline Box
-              </h4>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', marginBottom: 'var(--spacing-3)' }}>
+                <h4 style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-primary)', margin: 0, fontWeight: 700 }}>
+                  Hero Card Mission Tagline Box
+                </h4>
+                <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                  <label style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: 'var(--font-size-xs)', cursor: 'pointer', fontWeight: 600, color: 'var(--color-primary-dark)' }}>
+                    <input
+                      type="checkbox"
+                      checked={heroForm?.showCardMission !== false}
+                      onChange={(e) => setHeroForm({ ...heroForm, showCardMission: e.target.checked })}
+                    />
+                    Display Mission Box on Card
+                  </label>
+                  {(heroForm?.cardMissionLabel || heroForm?.cardMissionText) && (
+                    <button
+                      type="button"
+                      onClick={() => setHeroForm({ ...heroForm, cardMissionLabel: '', cardMissionText: '' })}
+                      style={{ background: 'none', border: 'none', color: 'var(--color-danger)', fontSize: '11px', cursor: 'pointer', fontWeight: 600, padding: 0 }}
+                    >
+                      ✕ Clear Text
+                    </button>
+                  )}
+                </div>
+              </div>
+
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--spacing-3)' }}>
                 <div className="form-group">
                   <label className="form-label">Tagline Label</label>
                   <input
                     type="text"
+                    placeholder="e.g. Clinical Mission: (Leave empty to remove label)"
                     value={heroForm?.cardMissionLabel || ''}
                     onChange={(e) => setHeroForm({ ...heroForm, cardMissionLabel: e.target.value })}
                   />
@@ -1219,6 +1294,7 @@ export const AdminContentPage = () => {
                   <label className="form-label">Tagline Text</label>
                   <input
                     type="text"
+                    placeholder="Enter mission tagline sentence..."
                     value={heroForm?.cardMissionText || ''}
                     onChange={(e) => setHeroForm({ ...heroForm, cardMissionText: e.target.value })}
                   />

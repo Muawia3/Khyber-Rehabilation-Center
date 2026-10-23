@@ -303,6 +303,8 @@
 }
 
 .hero-mission-box {
+  position: relative;
+  z-index: 6;
   background: linear-gradient(135deg, rgba(228, 246, 254, 0.75) 0%, rgba(210, 240, 253, 0.55) 100%);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -351,7 +353,7 @@
 }
 
 .hero-floating-chip-2 {
-  bottom: 8%;
+  top: 48%;
   left: -24px;
 }
 

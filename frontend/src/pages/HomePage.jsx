@@ -162,40 +162,48 @@ export const HomePage = () => {
                   </div>
 
                   {/* Clinical Trust Badges */}
-                  <div className="hero-trust-strip hero-trust-anim">
-                    <div className="trust-item">
-                      <div className="trust-icon-wrap">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                      </div>
-                      <span className="trust-label">{hero?.badge1 || '100% Confidential Medical Care'}</span>
+                  {hero?.showTrustBadges !== false && (hero?.badge1?.trim() || hero?.badge2?.trim()) && (
+                    <div className="hero-trust-strip hero-trust-anim">
+                      {hero?.badge1?.trim() && (
+                        <div className="trust-item">
+                          <div className="trust-icon-wrap">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                          </div>
+                          <span className="trust-label">{hero.badge1}</span>
+                        </div>
+                      )}
+                      {hero?.badge2?.trim() && (
+                        <div className="trust-item">
+                          <div className="trust-icon-wrap">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                              <circle cx="12" cy="12" r="10" />
+                              <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                          </div>
+                          <span className="trust-label">{hero.badge2}</span>
+                        </div>
+                      )}
                     </div>
-                    <div className="trust-item">
-                      <div className="trust-icon-wrap">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                      </div>
-                      <span className="trust-label">{hero?.badge2 || 'Emergency 24/7 Admissions'}</span>
-                    </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Hero Visual Composition with Layered Satellite Badges */}
                 <div className="hero-visual-canvas">
                   {/* Floating Satellite Chips (Desktop absolute, mobile flex) */}
-                  <div className="hero-chips-wrap">
-                    <div className="hero-floating-chip hero-floating-chip-1">
-                      <span className="floating-icon-cyan">✨</span>
-                      <span>150+ Recovered Alumni</span>
+                  {hero?.showFloatingChips !== false && (
+                    <div className="hero-chips-wrap">
+                      <div className="hero-floating-chip hero-floating-chip-1">
+                        <span className="floating-icon-cyan">✨</span>
+                        <span>150+ Recovered Alumni</span>
+                      </div>
+                      <div className="hero-floating-chip hero-floating-chip-2">
+                        <span className="floating-icon-cyan">🛡️</span>
+                        <span>100% Medical Confidentiality</span>
+                      </div>
                     </div>
-                    <div className="hero-floating-chip hero-floating-chip-2">
-                      <span className="floating-icon-cyan">🛡️</span>
-                      <span>100% Medical Confidentiality</span>
-                    </div>
-                  </div>
+                  )}
 
                   {/* Centerpiece Frosted Card */}
                   <div className="hero-visual-card">
@@ -236,13 +244,17 @@ export const HomePage = () => {
                       <p className="hero-visual-sub">
                         📍 {navbar?.topBarText || 'Naguman, Charsadda Road, Near Gulbela Peshawar'}
                       </p>
-                      <div className="hero-mission-box">
-                        <strong style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '3px' }}>
-                          {hero?.cardMissionLabel || 'Clinical Mission:'}
-                        </strong>
-                        {hero?.cardMissionText ||
-                          'Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.'}
-                      </div>
+                      {hero?.showCardMission !== false && (hero?.cardMissionLabel?.trim() || hero?.cardMissionText?.trim()) && (
+                        <div className="hero-mission-box">
+                          {hero?.cardMissionLabel?.trim() && (
+                            <strong style={{ color: 'var(--color-primary)', display: 'block', marginBottom: '3px' }}>
+                              {hero.cardMissionLabel}
+                            </strong>
+                          )}
+                          {hero?.cardMissionText ||
+                            'Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.'}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
