@@ -60,7 +60,7 @@ export const DEFAULT_SITE_CONTENT = {
     badge1: '100% Confidential Care',
     badge2: 'Emergency 24/7 Admissions',
     showTrustBadges: true,
-    showFloatingChips: true,
+    showFloatingChips: false,
     showCardMission: true,
     cardMissionLabel: 'Clinical Mission:',
     cardMissionText: 'Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.',

@@ -191,8 +191,8 @@ export const HomePage = () => {
 
                 {/* Hero Visual Composition with Layered Satellite Badges */}
                 <div className="hero-visual-canvas">
-                  {/* Floating Satellite Chips (Desktop absolute, mobile flex) */}
-                  {hero?.showFloatingChips !== false && (
+                  {/* Floating Satellite Chips (Disabled by default so they never block card words) */}
+                  {hero?.showFloatingChips === true && (
                     <div className="hero-chips-wrap">
                       <div className="hero-floating-chip hero-floating-chip-1">
                         <span className="floating-icon-cyan">✨</span>

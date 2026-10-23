@@ -198,10 +198,26 @@ export const AdminLeadershipPage = () => {
       };
 
       if (editingMember) {
-        await leadershipService.updateMember(editingMember.id, payload);
+        const updateRes = await leadershipService.updateMember(editingMember.id, payload);
+        const updatedItem = updateRes?.data || { ...editingMember, ...payload };
+        setFlatMembers((prev) => {
+          const next = prev.map((m) => (m.id === editingMember.id ? { ...m, ...updatedItem } : m));
+          try {
+            localStorage.setItem('khyber_leadership_data', JSON.stringify({ flat: next }));
+          } catch {}
+          return next;
+        });
         showAlert('success', `Leadership member "${payload.name}" updated successfully.`);
       } else {
-        await leadershipService.createMember(payload);
+        const createRes = await leadershipService.createMember(payload);
+        const newItem = createRes?.data || { id: `leader-${Date.now()}`, ...payload };
+        setFlatMembers((prev) => {
+          const next = [...prev, newItem];
+          try {
+            localStorage.setItem('khyber_leadership_data', JSON.stringify({ flat: next }));
+          } catch {}
+          return next;
+        });
         showAlert('success', `New leadership member "${payload.name}" added successfully.`);
       }
 
