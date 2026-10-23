@@ -56,8 +56,26 @@ export const apiClient = async (endpoint, { body, ...customConfig } = {}, retrie
     config.body = JSON.stringify(body);
   }
 
+  const primaryBaseUrl = getBaseUrl();
+
   try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, config);
+    let response = await fetch(`${primaryBaseUrl}${endpoint}`, config);
+    let contentType = response.headers.get('content-type') || '';
+
+    // If request returned HTML (Vite or static server SPA rewrite), try direct port 5000 Express backend
+    if (contentType.includes('text/html') && typeof window !== 'undefined' && primaryBaseUrl !== 'http://localhost:5000/api/v1') {
+      try {
+        const directResponse = await fetch(`http://localhost:5000/api/v1${endpoint}`, config);
+        const directContentType = directResponse.headers.get('content-type') || '';
+        if (!directContentType.includes('text/html')) {
+          response = directResponse;
+          contentType = directContentType;
+        }
+      } catch {
+        // Direct localhost backend unavailable
+      }
+    }
+
     let data;
     try {
       data = await response.json();
@@ -65,7 +83,6 @@ export const apiClient = async (endpoint, { body, ...customConfig } = {}, retrie
       data = null;
     }
 
-    const contentType = response.headers.get('content-type') || '';
     const isHtmlResponse = contentType.includes('text/html');
 
     if (isHtmlResponse) {

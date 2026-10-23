@@ -212,7 +212,7 @@ export const AdminInquiriesPage = () => {
 
       {apiNotice && (
         <Alert type="warning" title="Inquiries Service Notice">
-          {apiNotice} (Ensure PostgreSQL is running and credentials in backend/.env are configured)
+          {apiNotice}
         </Alert>
       )}
 
