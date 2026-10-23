@@ -3,8 +3,8 @@
     "key": "homepage_hero",
     "section": "home",
     "title": "Homepage Hero Section",
-    "content": "{\"badge\":\"150+ Patients Recovered • 5+ Programs Completed\",\"badgeTop\":\"24/7 Inpatient Care\",\"title\":\"Restoring Dignity, Rebuilding Lives in Peshawar\",\"subtitle\":\"A medically supervised rehabilitation center located at  Naguman, Charsadda Rd, Near Gulbella, Peshawar, Pakistan. We offer evidence-based detoxification, clinical psychotherapy, Fabric Cut Work vocational training, and sustainable small business initiatives.\",\"primaryBtnText\":\"24/7 Helpline: 0300-7335962\",\"primaryBtnLink\":\"/contact\",\"secondaryBtnText\":\"Explore Our Programs\",\"secondaryBtnLink\":\"/treatment\",\"whatsappBtnText\":\"WhatsApp Support\",\"badge1\":\"100% Confidential Care\",\"badge2\":\"Emergency 24/7 Admissions\",\"cardMissionLabel\":\"Clinical Mission:\",\"cardMissionText\":\"Healing body, mind, and spirit through medical supervision, psychological counseling, and vocational trades.\",\"heroImage\":\"/uploads/WhatsAppImage2026-10-12at24222PMjpeg-1792045042818.jpg\",\"bgTheme\":\"white\",\"testOk\":true,\"timestamp\":1792043946398}",
-    "updatedAt": "2026-10-15T06:17:27.009Z"
+    "content": "{\"badge\":\"150+ Patients Recovered • 85+ Programs Completed\",\"badgeTop\":\"24/7 Inpatient Care\",\"title\":\"Restoring Dignity, Rebuilding Lives in Peshawar\",\"subtitle\":\"A medically supervised rehabilitation center located at 4JCQ+GGG, Naguman, Charsadda Rd, near Gulbella, Peshawar, Pakistan.\",\"primaryBtnText\":\"24/7 Helpline: 0300-7335962\",\"primaryBtnLink\":\"/contact\",\"secondaryBtnText\":\"Explore Our Programs\",\"secondaryBtnLink\":\"/treatment\",\"whatsappBtnText\":\"WhatsApp Support\",\"badge1\":\"100% Confidential Care\",\"badge2\":\"Emergency 24/7 Admissions\",\"showTrustBadges\":true,\"showFloatingChips\":true,\"showCardMission\":true,\"cardMissionLabel\":\"Clinical Mission:\",\"cardMissionText\":\"Healing body, mind, and spirit through medical supervision.\",\"heroImage\":\"\",\"bgTheme\":\"white\"}",
+    "updatedAt": "2026-10-23T11:36:42.982Z"
   },
   {
     "key": "navbar_config",
@@ -32,48 +32,48 @@
     "section": "home",
     "title": "Homepage Mission & 3 Pillars",
     "content": "{\"badge\":\"Our Mission in Peshawar\",\"title\":\"A Dignified Path Toward Permanent Sobriety\",\"description\":\"At Khyber Rehabilitation Center, we treat individuals suffering from addiction and mental health challenges with unconditional empathy and clinical rigor.\",\"paragraphText\":\"Addiction is a chronic disease requiring structured medical stabilization, psychiatric psychotherapy, family counseling, and socio-economic support. Our multidisciplinary team works tirelessly to restore self-respect.\",\"btnText\":\"Learn More About Our Center\",\"btnLink\":\"/about\",\"pillarsTitle\":\"Our Three Core Pillars\",\"pillar1Title\":\"1. Medical Detoxification\",\"pillar1Desc\":\"Supervised clinical withdrawal in safe residential facilities with 24/7 vitals surveillance.\",\"pillar2Title\":\"2. Psychological Psychotherapy\",\"pillar2Desc\":\"Cognitive Behavioral Therapy (CBT), trauma counseling, and personalized relapse prevention plans.\",\"pillar3Title\":\"3. Fabric Cut Work & Small Businesses\",\"pillar3Desc\":\"Specialized Fabric Cut Work craftsmanship and sustainable small businesses (Loader Rickshaws, Chinchi Rickshaws, Livestock) empowering patients with self-reliance.\"}",
-    "updatedAt": "2026-10-15T06:17:27.025Z"
+    "updatedAt": "2026-10-23T11:25:09.341Z"
   },
   {
     "key": "homepage_stages",
     "section": "home",
     "title": "Homepage 4 Recovery Stages",
     "content": "{\"badge\":\"Roadmap to Freedom\",\"title\":\"The Four-Stage Recovery Pathway\",\"description\":\"Our multidisciplinary framework guiding individuals from physical withdrawal to economic autonomy.\",\"stage1Step\":\"01\",\"stage1Title\":\"Medical Assessment & Detoxification\",\"stage1Desc\":\"Direct medical supervision by qualified doctors and round-the-clock nursing care to manage withdrawal symptoms safely and with dignity.\",\"stage2Step\":\"02\",\"stage2Title\":\"Psychotherapy & Spiritual Counseling\",\"stage2Desc\":\"Clinical psychology sessions combined with moral and ethical guidance from our dedicated religious teacher.\",\"stage3Step\":\"03\",\"stage3Title\":\"Fabric Cut Work & Vocational Skills\",\"stage3Desc\":\"Specialized fabric cutting, pattern designing, and textile tailoring skills to empower patients with marketable craftsmanship.\",\"stage4Step\":\"04\",\"stage4Title\":\"Small Business Empowerment & Reintegration\",\"stage4Desc\":\"Sustainable livelihood pathways including Loader Rickshaw, Chinchi Rickshaw, and Livestock management for 150+ recovered alumni.\"}",
-    "updatedAt": "2026-10-15T06:17:27.041Z"
+    "updatedAt": "2026-10-23T11:25:09.606Z"
   },
   {
     "key": "homepage_treatment_sec",
     "section": "home",
     "title": "Homepage Treatments Header",
     "content": "{\"badge\":\"Clinical Care & Recovery\",\"title\":\"Structured Treatment Programs\",\"description\":\"Evidence-based clinical rehabilitation programs designed to ensure safety and sustainable healing.\",\"btnText\":\"View All Treatment Programs\",\"btnLink\":\"/treatment\"}",
-    "updatedAt": "2026-10-15T06:17:27.102Z"
+    "updatedAt": "2026-10-23T11:25:10.301Z"
   },
   {
     "key": "homepage_skills_sec",
     "section": "home",
     "title": "Homepage Vocational Skills Header",
     "content": "{\"badge\":\"Trade Skills & Sustainable Livelihood\",\"title\":\"Fabric Cut Work & Vocational Empowerment\",\"description\":\"Recovering patients learn specialized Fabric Cut Work, precision pattern drafting, cutwork embroidery, and tailoring.\",\"btnText\":\"Explore All Skill Programs\",\"btnLink\":\"/skills\"}",
-    "updatedAt": "2026-10-15T06:17:27.120Z"
+    "updatedAt": "2026-10-23T11:25:11.211Z"
   },
   {
     "key": "homepage_stories_sec",
     "section": "home",
     "title": "Homepage Success Stories Header",
     "content": "{\"badge\":\"150+ Recovered Patients Milestone\",\"title\":\"Stories of Recovery & Reintegration\",\"description\":\"Celebrating over 150+ patients recovered and 85+ programs completed through clinical detoxification, Fabric Cut Work, and small-business units in Peshawar.\",\"btnText\":\"Read Full Stories →\",\"btnLink\":\"/success-stories\"}",
-    "updatedAt": "2026-10-15T06:17:27.166Z"
+    "updatedAt": "2026-10-23T11:25:11.353Z"
   },
   {
     "key": "homepage_cta_sec",
     "section": "home",
     "title": "Homepage Bottom Admissions CTA",
     "content": "{\"title\":\"Ready to Take the First Step Toward Recovery?\",\"description\":\"Our medical team and admissions counselors are available 24/7 in Peshawar to assist you with compassionate, strictly confidential intake.\",\"primaryBtnText\":\"Contact Admissions Office\",\"primaryBtnLink\":\"/contact\",\"whatsappBtnText\":\"WhatsApp Helpline\"}",
-    "updatedAt": "2026-10-15T06:17:27.241Z"
+    "updatedAt": "2026-10-23T11:25:11.578Z"
   },
   {
     "key": "homepage_sections",
     "section": "home",
     "title": "Homepage Layout & Sections Order",
     "content": "[{\"id\":\"sec_hero\",\"type\":\"hero\",\"name\":\"Hero Welcome Banner\",\"isVisible\":true,\"order\":1},{\"id\":\"sec_announcements\",\"type\":\"announcements\",\"name\":\"Urgent Announcements & News\",\"isVisible\":true,\"order\":2},{\"id\":\"sec_intro\",\"type\":\"intro\",\"name\":\"Center Mission & Philosophy\",\"isVisible\":true,\"order\":3},{\"id\":\"sec_treatment\",\"type\":\"treatment\",\"name\":\"Rehabilitation Programs Showcase\",\"isVisible\":true,\"order\":4},{\"id\":\"sec_stages\",\"type\":\"stages\",\"name\":\"Four-Stage Recovery Pathway\",\"isVisible\":true,\"order\":5},{\"id\":\"sec_skills\",\"type\":\"skills\",\"name\":\"Fabric Cut Work & Trade Units\",\"isVisible\":true,\"order\":6},{\"id\":\"sec_stories\",\"type\":\"stories\",\"name\":\"Patient Recovery Journeys (150+ Recovered)\",\"isVisible\":true,\"order\":7},{\"id\":\"sec_cta\",\"type\":\"cta\",\"name\":\"Admissions & Help Banner\",\"isVisible\":true,\"order\":8}]",
-    "updatedAt": "2026-10-15T06:17:27.254Z"
+    "updatedAt": "2026-10-23T11:25:11.660Z"
   }
 ]

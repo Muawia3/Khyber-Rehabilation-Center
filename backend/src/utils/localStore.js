@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { DEFAULT_LEADERSHIP_TREE } from './defaultLeadership.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -257,6 +258,7 @@ const DEFAULT_DATA = {
   ],
 
   inquiries: [],
+  leadership: DEFAULT_LEADERSHIP_TREE,
 };
 
 const getFilePath = (collection) => path.join(DATA_DIR, `${collection}.json`);

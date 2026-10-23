@@ -29,17 +29,27 @@ export const contentService = {
       const persistedItems = localStore.getCollection('site_contents') || [];
       persistedItems.forEach((item) => {
         if (item.key && item.content) {
-          contentMap[item.key] = parseContentValue(item.content);
+          const parsed = parseContentValue(item.content);
+          if (typeof parsed === 'object' && !Array.isArray(parsed) && typeof contentMap[item.key] === 'object') {
+            contentMap[item.key] = { ...contentMap[item.key], ...parsed };
+          } else {
+            contentMap[item.key] = parsed;
+          }
         }
       });
     } catch {}
 
     // 3. Overlay any active in-memory cached updates
     inMemoryCache.forEach((value, k) => {
-      contentMap[k] = parseContentValue(value.content);
+      const parsed = parseContentValue(value.content);
+      if (typeof parsed === 'object' && !Array.isArray(parsed) && typeof contentMap[k] === 'object') {
+        contentMap[k] = { ...contentMap[k], ...parsed };
+      } else {
+        contentMap[k] = parsed;
+      }
     });
 
-    // 3. Query PostgreSQL if database is connected
+    // 4. Query PostgreSQL if database is connected
     if (isDatabaseConnected()) {
       try {
         const prisma = getPrismaClient();
@@ -49,7 +59,12 @@ export const contentService = {
 
         const items = await prisma.siteContent.findMany({ where });
         items.forEach((item) => {
-          contentMap[item.key] = parseContentValue(item.content);
+          const parsed = parseContentValue(item.content);
+          if (typeof parsed === 'object' && !Array.isArray(parsed) && typeof contentMap[item.key] === 'object') {
+            contentMap[item.key] = { ...contentMap[item.key], ...parsed };
+          } else {
+            contentMap[item.key] = parsed;
+          }
         });
       } catch (err) {
         // Fallback to localStore and cache
@@ -73,17 +88,23 @@ export const contentService = {
         orderBy: [{ section: 'asc' }, { key: 'asc' }],
       });
     } catch {
-      // Return cached list
+      // Return cached & localStore list
       const results = [];
+      const persistedItems = localStore.getCollection('site_contents') || [];
+      const persistedMap = new Map(persistedItems.map((it) => [it.key, it]));
+
       Object.keys(DEFAULT_SITE_CONTENT).forEach((k) => {
         const cached = inMemoryCache.get(k);
+        const persisted = persistedMap.get(k);
+        const itemContent = cached?.content || persisted?.content || JSON.stringify(DEFAULT_SITE_CONTENT[k]);
+
         results.push({
-          id: `default-${k}`,
+          id: persisted?.id || `default-${k}`,
           key: k,
-          section: 'global',
-          title: k.replace(/_/g, ' ').toUpperCase(),
-          content: cached ? cached.content : JSON.stringify(DEFAULT_SITE_CONTENT[k]),
-          updatedAt: new Date(),
+          section: persisted?.section || 'global',
+          title: persisted?.title || k.replace(/_/g, ' ').toUpperCase(),
+          content: itemContent,
+          updatedAt: persisted?.updatedAt || new Date(),
         });
       });
       return results;

@@ -5,9 +5,25 @@ import { leadershipService } from '../../services';
 
 export const AdminLeadershipPage = () => {
   useDocumentTitle('Admin - Manage Leadership & Hierarchy');
+  const [flatMembers, setFlatMembers] = useState(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const cached = JSON.parse(localStorage.getItem('khyber_leadership_data') || '{}');
+        return cached.flat || [];
+      }
+    } catch {}
+    return [];
+  });
+  const [treeData, setTreeData] = useState(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const cached = JSON.parse(localStorage.getItem('khyber_leadership_data') || '{}');
+        return cached.tree || [];
+      }
+    } catch {}
+    return [];
+  });
   const [loading, setLoading] = useState(true);
-  const [flatMembers, setFlatMembers] = useState([]);
-  const [treeData, setTreeData] = useState([]);
   const [alert, setAlert] = useState(null);
 
   // Active view tab: 'table' or 'preview'
@@ -46,10 +62,24 @@ export const AdminLeadershipPage = () => {
       if (response && response.data) {
         setFlatMembers(response.data.flat || []);
         setTreeData(response.data.tree || []);
+        try {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('khyber_leadership_data', JSON.stringify(response.data));
+          }
+        } catch {}
       }
     } catch (err) {
-      console.error('Failed to fetch admin leadership:', err);
-      showAlert('danger', 'Failed to retrieve leadership members from database.');
+      console.warn('Failed to fetch admin leadership:', err);
+      try {
+        if (typeof window !== 'undefined') {
+          const cached = JSON.parse(localStorage.getItem('khyber_leadership_data') || '{}');
+          if (cached.flat?.length) {
+            setFlatMembers(cached.flat);
+            setTreeData(cached.tree || []);
+          }
+        }
+      } catch {}
+      showAlert('danger', err.message || 'Failed to retrieve leadership members from server.');
     } finally {
       setLoading(false);
     }
